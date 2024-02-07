@@ -1,4 +1,4 @@
-import EslintBase from "eslintrc/base.js";
-import EslintTypescript from "eslintrc/typescript.js";
+import EslintBase from "./config/eslintrc/base.js";
+import EslintTypescript from "./config/eslintrc/typescript.js";
 
 export default [...EslintBase, ...EslintTypescript];

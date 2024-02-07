@@ -10,12 +10,12 @@ body:
 
         If you have a question about how to achieve something and are struggling, please post a question
         inside of either of the following places:
-          - MyPlop's 💬[Discussion's tab](https://github.com/INeedJobToStartWork/MyPlop/discussions)
+          - MyError's 💬[Discussion's tab](https://github.com/INeedJobToStartWork/MyError/discussions)
 
         Before submitting a new bug/issue, please check the links below to see if there is a solution or question posted there already:
-          - MyPlop's [Issue's tab]()
-          - MyPlop's [closed issues tab]()
-          - MyPlop's [Discussions tab]()
+          - MyError's [Issue's tab]()
+          - MyError's [closed issues tab]()
+          - MyError's [Discussions tab]()
 
 
         Please fill in as much of the template below as you're able. If you don't know the answer to a question, that's okay, but please try to fill in as much as you can.
@@ -29,15 +29,15 @@ body:
     validations:
       required: true
   - type: input
-    id: MyPlop_version
+    id: MyError_version
     attributes:
-      label: MyPlop Version
-      description: Which MyPlop version are you using?
+      label: MyError Version
+      description: Which MyError version are you using?
       placeholder: e.g. v0.5.0
     validations:
       required: true
   - type: checkboxes
-    id: MyPlop_latest
+    id: MyError_latest
     attributes:
       label: Tested on Latest Version
       description: Check if this issue is reproducible with the latest version - it could be fixed.

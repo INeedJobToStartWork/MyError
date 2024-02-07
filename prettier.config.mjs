@@ -1,4 +1,4 @@
-import prettierConfig from "prettierrc/.prettierrc.json"
+import prettierConfig from "./config/prettierrc/.prettierrc.json" assert { type: "json" };
 export default {
-    ...prettierConfig,
-}
+	...prettierConfig
+};

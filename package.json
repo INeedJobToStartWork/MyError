@@ -2,11 +2,11 @@
 	"name": "myerror",
 	"version": "0.1.0",
 	"private": true,
-	"type": "module",
-  "repository": {
+	"repository": {
 		"type": "git",
 		"url": "https://github.com/INeedJobToStartWork/MyError"
 	},
+	"type": "module",
 	"main": "index.cjs",
 	"types": "index.d.ts",
 	"scripts": {
@@ -25,11 +25,11 @@
 		"npm:publish": "npm publish",
 		"pre": "npx lint-staged",
 		"pre:husky": "git add . && npx lint-staged",
+		"start": "node ./dist/index.cjs",
 		"test": "echo 'Add test script here'",
 		"unlink-cli": "cd lib && pnpm unlink --global",
 		"unlink-cli:dev": "cd lib && pnpm unlink --global",
-		"unlink-cli:prod": "cd dist && pnpm unlink --global",
-		"start":"node ./dist/index.cjs"
+		"unlink-cli:prod": "cd dist && pnpm unlink --global"
 	},
 	"devDependencies": {
 		"@changesets/cli": "^2.27.1",

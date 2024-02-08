@@ -31,6 +31,14 @@
 		"unlink-cli:dev": "cd lib && pnpm unlink --global",
 		"unlink-cli:prod": "cd dist && pnpm unlink --global"
 	},
+	"lint-staged": {
+		"*": [
+			"git add .",
+			"pnpm format",
+			"pnpm lint:fix",
+			"pnpm lint"
+		]
+	},
 	"devDependencies": {
 		"@changesets/cli": "^2.27.1",
 		"@stylistic/eslint-plugin": "^1.6.0",

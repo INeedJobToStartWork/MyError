@@ -154,7 +154,16 @@ export default [
 			"@typescript-eslint/triple-slash-reference": "error",
 			"@typescript-eslint/unified-signatures": "error",
 			"no-return-await": "off",
-			"require-await": "off"
+			"require-await": "off",
+			"@typescript-eslint/ban-types": [
+				"error",
+				{
+					types: {
+						TODO: "You have to do TODO before you can lint it!"
+					},
+					extendDefaults: true
+				}
+			]
 		}
 	}
 ];

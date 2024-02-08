@@ -1,4 +1,3 @@
-import CopyPlugin from "copy-webpack-plugin";
 import { resolve } from "path";
 
 const __dirname = resolve();
@@ -25,10 +24,7 @@ export default {
 		filename: "[name].cjs",
 		path: resolve(__dirname, "lib"),
 		chunkLoading: false,
-		library: {
-			type: "commonjs2",
-			export: "default"
-		}
+		library: "index"
 	},
 	resolve: {
 		extensions: ["", ".ts", ".js", ".mjs", ".mts"],

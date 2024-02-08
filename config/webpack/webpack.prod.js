@@ -1,4 +1,6 @@
 import webpackBaseConfig from "./webpack.base.js";
+import bundle from "bundle-declarations-webpack-plugin";
+import CopyPlugin from "copy-webpack-plugin";
 import { resolve } from "path";
 import { merge } from "webpack-merge";
 
@@ -16,5 +18,24 @@ export default merge(webpackBaseConfig, {
 	},
 	output: {
 		path: PATHOUT
-	}
+	},
+	plugins: [
+		new bundle.BundleDeclarationsWebpackPlugin({
+			entry: {
+				filePath: "./src/index.ts"
+			},
+			outFile: "index.d.ts",
+			compilationOptions: {},
+			removeEmptyLines: false,
+			removeEmptyExports: false
+		}),
+		new CopyPlugin({
+			patterns: [
+				{
+					from: resolve(__dirname, "package.json"),
+					to: PATHOUT
+				}
+			]
+		})
+	]
 });

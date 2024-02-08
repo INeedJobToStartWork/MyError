@@ -11,7 +11,7 @@ type MyErrorCatcherReturn<T extends arrowFunction<T>> = Prettify<ReturnType<T>>;
 
 // (...args: Parameters<T>) => ReturnType<T>
 
-export const MyErrorCatcher =
+export const myErrorCatcher =
 	<T extends arrowFunction<T>>(fnThatMayThrow: T) =>
 	async (...args: Parameters<T>): Promise<Prettify<ReturnType<T>>> =>
 		new Promise(resolve => {
@@ -24,4 +24,4 @@ export const MyErrorCatcher =
 // 			resolve(fnThatMayThrow(...args));
 // 		});
 
-export default MyErrorCatcher;
+export default myErrorCatcher;

@@ -2,7 +2,7 @@ import type { ErrorTypesCatched, arrowFunction } from "@/utils/types";
 
 type MyErrorWrapperReturn<T extends arrowFunction<T>> = [ErrorTypesCatched, true] | [ReturnType<T>, false];
 
-export const MyErrorWrapper =
+export const myErrorWrapper =
 	<T extends arrowFunction<T>>(fnThatMayThrow: T) =>
 	(...args: Parameters<T>): MyErrorWrapperReturn<T> => {
 		try {
@@ -13,4 +13,4 @@ export const MyErrorWrapper =
 		}
 	};
 
-export default MyErrorWrapper;
+export default myErrorWrapper;

@@ -1,3 +1,3 @@
-export * from "./MyErrorCatcher";
-export * from "./MyErrorWrapper";
-export * from "./MyErrorHandler";
+export * from "./myErrorCatcher";
+export * from "./myErrorWrapper";
+export * from "./myErrorHandler";

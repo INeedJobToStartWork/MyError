@@ -1,1 +1,1 @@
-export * from "./MyErrorWrapper";
+export * from "./myErrorWrapper";

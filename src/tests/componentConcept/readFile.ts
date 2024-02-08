@@ -1,5 +1,5 @@
 import { readFileSync, existsSync } from "node:fs";
-import { MyErrorHandler, MyErrorWrapper as myErrorWrapper } from "@/utils";
+import { myErrorHandler, myErrorWrapper } from "@/utils";
 import type { TFunctionReturn, TMyErrorList } from "@/utils/types";
 import { join } from "node:path";
 

@@ -31,4 +31,7 @@ export type TDataReturn<T> = [T, false];
 export type TErrorReturned = [TMyError, true];
 export type TFunctionReturn<T> = Prettify<TDataReturn<T>> | Prettify<TErrorReturned>;
 
-export type TMyErrorList = Record<string, TMyError>;
+export type TMyErrorList = Record<string, Required<TMyError>>;
+export type TMyHandler<T extends TMyErrorList> = Partial<{
+	[K in T[keyof T]["code"]]: (...args: K[]) => TFunctionReturn<unknown>;
+}>;

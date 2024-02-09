@@ -1,9 +1,10 @@
 import { expect, it } from "vitest";
 
-import { readFile } from "./readFile";
+import { readFile, readFileHandler } from "./readFile";
+import { myErrorHandler } from "@/utils";
 
 it("should read file", () => {
-	const [result, error] = readFile("./fileToRead.txt");
+	const [result] = readFile("./fileToRead.txt");
 	expect(result).toBe("Test pass text");
 });
 it("should Throw Error - not find file", () => {
@@ -12,5 +13,5 @@ it("should Throw Error - not find file", () => {
 });
 
 it("", () => {
-	const [result, error] = readFile("./IDoNotExist.txt");
+	myErrorHandler("FS001", readFileHandler)("Test");
 });

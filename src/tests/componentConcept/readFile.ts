@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from "node:fs";
-import { myErrorHandler, myErrorWrapper } from "@/utils";
-import type { TFunctionReturn, TMyErrorList } from "@/utils/types";
+import { myErrorWrapper } from "@/utils";
+import type { TFunctionReturn, TMyErrorList, TMyHandler } from "@/utils/types";
 import { join } from "node:path";
 
 const ErrorList = {
@@ -17,14 +17,18 @@ const ErrorList = {
 			dev: "File is corrupted or has no permissions to be read"
 		}
 	}
-} satisfies TMyErrorList;
+} as const satisfies TMyErrorList;
 
-const ErrorHandlerList = {
-	FS001: () => "File not found"
-} satisfies Record<(typeof ErrorList)[keyof typeof ErrorList]["code"], () => void>;
-// const ErrorHandlerList = {
-// 	FS001: () => console.log("File not found")
-// } satisfies Record<(typeof ErrorList)[keyof typeof ErrorList]["code"], () => void>;
+export const readFileHandler = {
+	FS001: (name: string) => {
+		if (name) return [{ code: "123" }, true];
+		return ["File not found", false];
+	},
+	FS002: (name: string) => {
+		if (name) return [{ code: "123" }, true];
+		return [123, false];
+	}
+} as const satisfies TMyHandler<typeof ErrorList>;
 
 export const readFile = (path: string): TFunctionReturn<string> => {
 	const finalPath = join(__dirname, path);

@@ -15,7 +15,7 @@ export type ErrorTypesCatched =
 	| SyntaxErrorConstructor
 	| TypeErrorConstructor;
 
-export type TMyError = {
+export type TMyError<T = NonNullable<unknown>> = T & {
 	code?: number | string;
 	message?: {
 		user?: string;
@@ -28,10 +28,16 @@ export type TMyError = {
 };
 
 export type TDataReturn<T> = [T, false];
-export type TErrorReturned = [TMyError, true];
+export type TErrorReturned<CustomError = NonNullable<unknown>> = [TMyError<CustomError>, true];
 export type TFunctionReturn<T> = Prettify<TDataReturn<T>> | Prettify<TErrorReturned>;
 
-export type TMyErrorList = Record<string, Required<TMyError>>;
-export type TMyHandler<T extends TMyErrorList> = Partial<{
+export type TMyErrorList<CustomError = NonNullable<unknown>> = Record<string, Required<TMyError<CustomError>>>;
+export type TMyHandler<
+	CustomError,
+	T extends Record<number | string, { code: string & unknown }> & TMyErrorList<CustomError>
+> = Partial<{
 	[K in T[keyof T]["code"]]: (...args: K[]) => TFunctionReturn<unknown>;
 }>;
+// export type TMyHandler<,T extends TMyErrorList<CustomError>> = Partial<{
+// 	[K in T[keyof T]["code"]]: (...args: K[]) => TFunctionReturn<unknown>;
+// }>;

@@ -28,7 +28,7 @@ export const readFileHandler = {
 		if (name) return [{ code: "123" }, true];
 		return [123, false];
 	}
-} as const satisfies TMyHandler<typeof ErrorList>;
+} as const satisfies TMyHandler<NonNullable<unknown>, typeof ErrorList>;
 
 export const readFile = (path: string): TFunctionReturn<string> => {
 	const finalPath = join(__dirname, path);

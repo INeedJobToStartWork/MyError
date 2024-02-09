@@ -1,4 +1,5 @@
 import { resolve } from "path";
+import JsonMinimizerPlugin from "json-minimizer-webpack-plugin";
 
 const __dirname = resolve();
 const PATHOUT = resolve(__dirname, "lib");
@@ -31,6 +32,10 @@ export default {
 		alias: {
 			"@": resolve(__dirname, "src/")
 		}
+	},
+	optimization: {
+		minimize: true,
+		minimizer: ["...", new JsonMinimizerPlugin()]
 	},
 	target: "node"
 };

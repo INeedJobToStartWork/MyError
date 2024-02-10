@@ -26,5 +26,4 @@ export const myErrorHandler =
 			return [ErrorList.executionError, true];
 		}
 	};
-
 export default myErrorHandler;

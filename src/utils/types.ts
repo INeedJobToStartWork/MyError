@@ -28,8 +28,8 @@ export type TMyError<T = NonNullable<unknown>> = T & {
 };
 
 export type TDataReturn<T> = [T, false];
-export type TErrorReturned<CustomError = NonNullable<unknown>> = [TMyError<CustomError>, true];
-export type TFunctionReturn<T> = Prettify<TDataReturn<T>> | Prettify<TErrorReturned>;
+export type TErrorReturn<CustomError = NonNullable<unknown>> = [TMyError<CustomError>, true];
+export type TFunctionReturn<T> = Prettify<TDataReturn<T>> | Prettify<TErrorReturn>;
 
 export type TMyErrorList<CustomError = NonNullable<unknown>> = Record<string, Required<TMyError<CustomError>>>;
 export type TMyHandler<

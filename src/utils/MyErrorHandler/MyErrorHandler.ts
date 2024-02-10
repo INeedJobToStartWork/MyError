@@ -15,11 +15,11 @@ const ErrorList = {
 } as const satisfies TMyErrorList;
 
 export const myErrorHandler =
-	<T extends keyof K, K extends Record<T, K[T]>>(errorName: T, errorSolutions: K) =>
+	<T extends keyof K, K extends Record<T, K[T]>>(errorCode: T, errorSolutions: K) =>
 	(...args: Parameters<K[T]>): Prettify<TFunctionReturn<ReturnType<K[T]>>> => {
-		if (!(errorName in errorSolutions) && errorSolutions[errorName]) return [ErrorList.noKeyInList, true];
+		if (!(errorCode in errorSolutions) && errorSolutions[errorCode]) return [ErrorList.noKeyInList, true];
 		try {
-			const [data, error] = myErrorWrapper(errorSolutions[errorName])(...args);
+			const [data, error] = myErrorWrapper(errorSolutions[errorCode])(...args);
 			if (error) throw new Error();
 			return data as K[T];
 		} catch {

@@ -34,6 +34,10 @@ export default merge(webpackBaseConfig, {
 				{
 					from: resolve(__dirname, "package.json"),
 					to: PATHOUT
+				},
+				{
+					from: resolve(__dirname, "README.md"),
+					to: PATHOUT
 				}
 			]
 		})

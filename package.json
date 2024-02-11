@@ -1,6 +1,7 @@
 {
-	"name": "@ineedj/myerror",
-	"version": "0.1.0",
+	"name": "oh-my-error",
+	"version": "0.1.1",
+	"description": "A simple error handler for nodejs",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/INeedJobToStartWork/MyError"

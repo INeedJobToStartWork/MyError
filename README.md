@@ -1,4 +1,5 @@
 ![image](https://github.com/INeedJobToStartWork/MyError/assets/97305201/03fa3e50-af28-4345-a3f7-f84d091b4eb1)
+
 <h1 align="center">MyError</h1>
 <p align="center"><b>Very Clean Error Handler!</b></p>
 
@@ -16,32 +17,33 @@
   - [MyErrorList](#init-config)
   - [MyErrorHandlerList](#init-config)
 - [Sample of Code](#sample-of-code)
-    
 
 ## Install
 
 NPM
 
 ```bash copy
-npm install myerror
+npm install oh-my-error
 ```
 
 PNPM
 
 ```bash copy
-pnpm add myerror
+pnpm add oh-my-error
 ```
 
 Yarn
 
 ```bash copy
-yarn add myerror
+yarn add oh-my-error
 ```
 
 ## Types
 
 ### TMyError<T>
+
 Error construction with optional own parameters.
+
 ```
 type TMyError<T = NonNullable<unknown>> = T & {
 	code?: number | string;
@@ -57,6 +59,7 @@ type TMyError<T = NonNullable<unknown>> = T & {
 ```
 
 ### TMyErrorList
+
 Object with TMyError structure
 
 ```
@@ -64,6 +67,7 @@ export type TMyErrorList<CustomError = NonNullable<unknown>> = Record<string, Re
 ```
 
 ### TMyHandler
+
 Object with handlers of errors
 
 ```
@@ -74,67 +78,90 @@ export type TMyHandler<
 ```
 
 ### TMyFunctionReturn
-Function return standard. 
+
+Function return standard.
+
 ```
 export type TFunctionReturn<T> = Prettify<TDataReturn<T>> | Prettify<TErrorReturn>;
 ```
 
 ### TErrorReturn
+
 Function Error return standard
+
 ```
 export type TErrorReturn<CustomError = NonNullable<unknown>> = [TMyError<CustomError>, true]
 ```
+
 ### TDataReturn -
+
 Function Data return standard
+
 ```
 export type TDataReturn<T> = [T, false];
 ```
 
 ## Functions
+
 ### myErrorWrapper
+
 Error Wrapper which works on trycatch return result in array
+
 #### Arguments
+
 Function is receiving 2 arguments.
+
 ```
 <T extends arrowFunction<T>>(fnThatMayThrow: T) => (...args: Parameters<T>)
 ```
-`fnThatMayThrow` - **Function** which we want to run. <br/>
-`args` - Arguments which `fnThatMayThrow` should receive.
+
+`fnThatMayThrow` - **Function** which we want to run. <br/> `args` - Arguments which `fnThatMayThrow` should receive.
 
 #### Return
+
 ```
   type MyErrorWrapperReturn<T extends arrowFunction<T>> = [ErrorTypesCatched, true] | [ReturnType<T>, false]
 ```
+
 <br/>
 
-`[ error throwed trycatch , true - status of error ]` <br/>
-**or** <br/>
+`[ error throwed trycatch , true - status of error ]` <br/> **or** <br/>
 `[ fnThatMayThrow(...args) returntype/result , false - status of error ]`
 
 #### Example
+
 Wrapping currently existing function <br/>
+
 ```
 const [data,error] = myErrorWrapper(readFileSync)("./PathToFile.txt")
 ```
 
-
 ### myErrorCatcher
+
 Error Catcher work on Promises
+
 #### Arguments
+
 Function is receiving 2 arguments.
+
 ```
 <T extends arrowFunction<T>>(fnThatMayThrow: T) => async (...args: Parameters<T>)
 ```
-`fnThatMayThrow` - **Function** which we want to run. <br/>
-`args` - Arguments which `fnThatMayThrow` should receive.
+
+`fnThatMayThrow` - **Function** which we want to run. <br/> `args` - Arguments which `fnThatMayThrow` should receive.
 
 #### Return
+
 ```
   Promise<Prettify<ReturnType<T>>>
 ```
+
 Return promise for `fnThatMayThrow` return type.
+
 #### Example
+
 Wrapping currently existing function.
+
 ```
 const data = myErrorCatcher(readFileSync)("./PathToFile.txt").catch(()=>{
   console.log("Can't load file.")
@@ -143,40 +170,50 @@ const data = myErrorCatcher(readFileSync)("./PathToFile.txt").catch(()=>{
 ```
 
 ### myErrorHandler
+
 Function which handle error of your function.
+
 #### Arguments
+
 ```
 <T extends keyof K, K extends Record<T, K[T]>>(errorName: T, errorSolutions: K) =>
 	(...args: Parameters<K[T]>)
 ```
-`errorCode` - `Key` in `Object` of `errorSolutions`.<br/>
-`errorSolutions` - Object which Storage solutions for problem `errorCode`.<br/>
+
+`errorCode` - `Key` in `Object` of `errorSolutions`.<br/> `errorSolutions` - Object which Storage solutions for problem
+`errorCode`.<br/>
+
 #### Return
+
 ```
 Prettify<TFunctionReturn<ReturnType<K[T]>>>
 ```
-`[ TMyError , true - status of error ]` <br/>
-**or** <br/>
+
+`[ TMyError , true - status of error ]` <br/> **or** <br/>
 `[ errorSolutions[errorCode](...args) returntype/result , false - status of error ]`
+
 #### Errors
 
 ##### EH001
-errorName (key) not found in errorSolutions (object)<br/>
-Check if errorName is in errorSolutions<br/>
+
+errorName (key) not found in errorSolutions (object)<br/> Check if errorName is in errorSolutions<br/>
 
 ##### EH002
-Error in execution of Solution <br/>
-Check if the function `errorSolutions[errorName]()` is working properly
+
+Error in execution of Solution <br/> Check if the function `errorSolutions[errorName]()` is working properly
 
 ## Objects
+
 ### MyErrorList
+
 List of Errors which your function can return.
 
 > [!IMPORTANT]  
-> Use `as const satisfies TMyErrorList` to work it properly. <br/>
-> **Don't** forget about `const` because without this you not gonna get tips.
+> Use `as const satisfies TMyErrorList` to work it properly. <br/> > **Don't** forget about `const` because without this
+> you not gonna get tips.
 
 #### Example
+
 ```
 const ErrorList = {
 	notFound: {
@@ -196,13 +233,15 @@ const ErrorList = {
 ```
 
 ### TMyHandler
+
 List of Errors handlers which your function can run.
 
 > [!IMPORTANT]  
-> Use `as const satisfies TMyHandler<NonNullable<unknown>, typeof ErrorList>` to work it properly. <br/>
-> **Don't** forget about `const` because without this you not gonna get tips.
+> Use `as const satisfies TMyHandler<NonNullable<unknown>, typeof ErrorList>` to work it properly. <br/> > **Don't**
+> forget about `const` because without this you not gonna get tips.
 
 #### Example
+
 ```
 export const readFileHandler = {
 	FS001: (name: string) => {
@@ -216,8 +255,8 @@ export const readFileHandler = {
 } as const satisfies TMyHandler<NonNullable<unknown>, typeof ErrorList>;
 ```
 
-
 ## Sample of Code
+
 [File with Example](https://github.com/INeedJobToStartWork/MyError/blob/main/src/tests/componentConcept/readFile.ts)
 
 ```
@@ -261,7 +300,3 @@ export const readFile = (path: string): TFunctionReturn<string> => {
 	return [result.toString(), false];
 };
 ```
-
-
-
-

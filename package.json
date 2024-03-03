@@ -19,8 +19,8 @@
 		}
 	},
 	"scripts": {
-		"build": "webpack --config ./config/webpack/webpack.prod.js",
-		"build:npm": "pnpm npm:prepack && webpack --config ./config/webpack/webpack.prod.js && pnpm npm:postpack ",
+		"build": "webpack --config ./config/webpack/webpack.prod.js && gen-esm-wrapper ./dist/index.cjs ./dist/index.mjs",
+		"build:npm": "pnpm npm:prepack && webpack --config ./config/webpack/webpack.prod.js && pnpm npm:postpack && gen-esm-wrapper ./dist/index.cjs ./dist/index.mjs",
 		"dev": "webpack --config ./config/webpack/webpack.dev.js",
 		"format": "pnpm prettier . --write && pnpm prettier . --check",
 		"preinstall": "husky install",
@@ -59,8 +59,6 @@
 		"clean-package": "^2.2.0",
 		"commitsmile": "^0.5.0",
 		"copy-webpack-plugin": "^12.0.2",
-		"cts-types": "^0.0.6",
-		"dotcjs": "^1.0.1",
 		"eslint-plugin-optimize-regex": "^1.2.1",
 		"eslint-plugin-pii": "^1.0.2",
 		"eslint-plugin-security": "^2.1.0",

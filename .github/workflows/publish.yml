@@ -1,0 +1,25 @@
+name: Publish Package to npmjs
+on:
+  release:
+    types: [created]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.4.0
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+      - run: pnpm build:npm
+      - run: cd ./dist
+      - run: npm publish --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

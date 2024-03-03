@@ -1,5 +1,16 @@
 # oh-my-error
 
+## 1.0.0
+
+Release!🎉
+
+### Major Changes
+
+- Added Full support for commonjs and esm.
+- Fixed exported types.
+- ReadMe Fixed.
+- Size reduced.
+
 ## 0.1.1
 
 ### Patch Changes

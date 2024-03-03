@@ -7,8 +7,17 @@
 		"url": "https://github.com/INeedJobToStartWork/MyError"
 	},
 	"type": "module",
-	"main": "index.cjs",
-	"types": "index.d.ts",
+	"exports": {
+		".": {
+			"types": {
+				"import": "./index.d.ts",
+				"require": "./index.d.ts"
+			},
+			"import": "./index.mjs",
+			"require": "./index.cjs",
+			"*": "./*"
+		}
+	},
 	"scripts": {
 		"build": "webpack --config ./config/webpack/webpack.prod.js",
 		"build:npm": "pnpm npm:prepack && webpack --config ./config/webpack/webpack.prod.js && pnpm npm:postpack ",
@@ -50,10 +59,13 @@
 		"clean-package": "^2.2.0",
 		"commitsmile": "^0.5.0",
 		"copy-webpack-plugin": "^12.0.2",
+		"cts-types": "^0.0.6",
+		"dotcjs": "^1.0.1",
 		"eslint-plugin-optimize-regex": "^1.2.1",
 		"eslint-plugin-pii": "^1.0.2",
 		"eslint-plugin-security": "^2.1.0",
 		"eslint-plugin-sort-keys-fix": "^1.1.2",
+		"gen-esm-wrapper": "^1.1.3",
 		"globals": "^13.24.0",
 		"husky": "^8.0.3",
 		"json-minimizer-webpack-plugin": "^5.0.0",
@@ -61,6 +73,7 @@
 		"prettier": "^3.2.5",
 		"prettier-plugin-packagejson": "^2.4.10",
 		"swc-loader": "^0.2.6",
+		"ts-loader": "^9.5.1",
 		"typescript": "^5.3.3",
 		"vitest": "^1.2.2",
 		"webpack": "^5.90.1",

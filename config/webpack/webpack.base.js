@@ -10,6 +10,13 @@ export default {
 	},
 	module: {
 		rules: [
+			// {
+			// 	exclude: "/\\node_modules\\[^\\]+$/gusm",
+			// 	test: /\.(ts|mts)$/,
+			// 	use: {
+			// 		loader: "ts-loader"
+			// 	}
+			// }
 			{
 				exclude: "/\\node_modules\\[^\\]+$/gusm",
 				test: /\.(ts|mts)$/,
@@ -25,7 +32,7 @@ export default {
 		filename: "[name].cjs",
 		path: resolve(__dirname, "lib"),
 		chunkLoading: false,
-		library: "index"
+		libraryTarget: "commonjs2"
 	},
 	resolve: {
 		extensions: ["", ".ts", ".js", ".mjs", ".mts"],

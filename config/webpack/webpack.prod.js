@@ -25,7 +25,9 @@ export default merge(webpackBaseConfig, {
 				filePath: "./src/index.ts"
 			},
 			outFile: "index.d.ts",
-			compilationOptions: {},
+			compilationOptions: {
+				sourceMap: true
+			},
 			removeEmptyLines: false,
 			removeEmptyExports: false
 		}),

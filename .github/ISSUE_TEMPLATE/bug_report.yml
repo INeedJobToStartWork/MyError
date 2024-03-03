@@ -13,9 +13,9 @@ body:
           - MyError's 💬[Discussion's tab](https://github.com/INeedJobToStartWork/MyError/discussions)
 
         Before submitting a new bug/issue, please check the links below to see if there is a solution or question posted there already:
-          - MyError's [Issue's tab]()
-          - MyError's [closed issues tab]()
-          - MyError's [Discussions tab]()
+          - MyError's [Issue's tab](https://github.com/INeedJobToStartWork/MyError/issues)
+          - MyError's [closed issues tab](https://github.com/INeedJobToStartWork/MyError/issues?q=is%3Aissue+is%3Aclosed+)
+          - MyError's [Discussions tab](https://github.com/INeedJobToStartWork/MyError/discussions)
 
 
         Please fill in as much of the template below as you're able. If you don't know the answer to a question, that's okay, but please try to fill in as much as you can.

@@ -22,7 +22,7 @@
 				"import": "./index.d.ts",
 				"require": "./index.d.cts"
 			},
-			"import": "./index.mjs",
+			"import": "./index.js",
 			"require": "./index.cjs",
 			"*": "./*"
 		}

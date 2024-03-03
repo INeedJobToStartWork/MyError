@@ -9,13 +9,13 @@
 
 - [Install](#install)
 - [Types](#types)
-- [Functions](#existing-functions)
-  - [myErrorWrapper](#custom-file-path)
-  - [myErrorCatcher](#init-config)
-  - [myErrorHandler](#init-config)
-- [Objects](#new-functions)
-  - [MyErrorList](#init-config)
-  - [MyErrorHandlerList](#init-config)
+- [Functions](#functions)
+  - [myErrorWrapper](#myErrorWrapper)
+  - [myErrorCatcher](#myErrorCatcher)
+  - [myErrorHandler](#myErrorHandler)
+- [Objects](#Objects)
+  - [MyErrorList](#MyErrorList)
+  - [MyHandler](#MyHandler)
 - [Sample of Code](#sample-of-code)
 
 ## Install
@@ -232,7 +232,7 @@ const ErrorList = {
 } as const satisfies TMyErrorList;
 ```
 
-### TMyHandler
+### MyHandler
 
 List of Errors handlers which your function can run.
 

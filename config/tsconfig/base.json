@@ -2,6 +2,7 @@
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"compilerOptions": {
 		"declaration": true,
+		"isolatedModules": true,
 		"lib": ["esnext", "dom"],
 		"module": "ESNext",
 		"moduleResolution": "Bundler",

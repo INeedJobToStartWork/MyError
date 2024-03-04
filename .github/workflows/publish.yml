@@ -3,22 +3,28 @@ on:
   release:
     types: [created]
 jobs:
-  build:
+  release:
+    name: 📦 Publish to npm
     runs-on: ubuntu-latest
     permissions:
       contents: read
       id-token: write
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: 📚 Checkout
+        uses: actions/checkout@v3
+      - name: 🟢 Setup node
+        uses: actions/setup-node@v3
         with:
           node-version: "^20"
           registry-url: "https://registry.npmjs.org"
-      - name: Setup pnpm
+      - name: 🚀 Setup pnpm
         uses: pnpm/action-setup@v2.4.0
-      - name: Install dependencies
+      - name: ↘️ Install dependencies
         run: pnpm install --no-frozen-lockfile
-      - run: pnpm build:npm
-      - run: cd ./dist && npm publish --provenance
+      - name: 🏗️ Build Package
+        run: pnpm build:npm
+      - name: 📦 Publish to npm
+        working-directory: ./dist
+        run: npm publish --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

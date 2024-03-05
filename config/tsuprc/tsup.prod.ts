@@ -15,6 +15,8 @@ export default defineConfig({
 		copy({
 			assets: [
 				{ from: "./package.json", to: "./package.json" },
+				{ from: "./.npmrc", to: "./.npmrc" },
+				{ from: "./.npmignore", to: "./.npmignore" },
 				{ from: "./README.npm.md", to: "./README.md" }
 			]
 		})

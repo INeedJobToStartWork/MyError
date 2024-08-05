@@ -20,7 +20,7 @@ jobs:
           node-version: ^20
           registry-url: https://registry.npmjs.org
       - name: 🚀 Setup pnpm
-        uses: pnpm/action-setup@v2.4.0
+        uses: pnpm/action-setup@v4
       - name: ↘️ Install dependencies
         run: pnpm install --no-frozen-lockfile
       - name: 🏗️ Build Package

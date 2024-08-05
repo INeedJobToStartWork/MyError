@@ -1,5 +1,5 @@
 import type { Prettify, TFunctionReturn, TMyErrorList } from "@/utils/types";
-import { myErrorWrapper } from "..";
+import { myErrorWrapper } from ".";
 
 const ErrorList = {
 	noKeyInList: {

@@ -1,7 +1,9 @@
+---
 name: Publish Package to npmjs
 on:
   release:
-    types: [created]
+    types:
+      - created
 jobs:
   release:
     name: 📦 Publish to npm
@@ -15,8 +17,8 @@ jobs:
       - name: 🟢 Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: "^20"
-          registry-url: "https://registry.npmjs.org"
+          node-version: ^20
+          registry-url: https://registry.npmjs.org
       - name: 🚀 Setup pnpm
         uses: pnpm/action-setup@v2.4.0
       - name: ↘️ Install dependencies

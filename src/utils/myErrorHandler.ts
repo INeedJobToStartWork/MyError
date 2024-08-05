@@ -4,11 +4,13 @@ import { myErrorWrapper } from ".";
 const ErrorList = {
 	noKeyInList: {
 		code: "EH001",
+		name: "Not found key in list",
 		message: { dev: "errorName (key) not found in errorSolutions (object)" },
 		hint: { dev: "Check if errorName is in errorSolutions" }
 	},
 	executionError: {
 		code: "EH002",
+		name: "Error in Execution",
 		message: { dev: "Error in execution of Solution" },
 		hint: { dev: "Check if the function `errorSolutions[errorName]()` is working properly " }
 	}

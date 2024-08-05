@@ -1,10 +1,10 @@
-import type { Prettify, arrowFunction } from "@/utils/types";
+import type { arrowFunction } from "@/utils/types";
 
 export const myErrorCatcher =
-	<T extends arrowFunction<T>>(fnThatMayThrow: T) =>
-	async (...args: Parameters<T>): Promise<Prettify<ReturnType<T>>> =>
+	<T extends arrowFunction<T>>(functionThatMayThrow: T) =>
+	async (...arguments_: Parameters<T>): Promise<ReturnType<T>> =>
 		new Promise(resolve => {
-			resolve(fnThatMayThrow(...args));
+			resolve(functionThatMayThrow(...arguments_));
 		});
 
 export default myErrorCatcher;

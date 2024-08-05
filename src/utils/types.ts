@@ -1,10 +1,10 @@
 export type TODO = any; // eslint-disable-line @typescript-eslint/no-explicit-any
-export type Prettify<T> = NonNullable<unknown> & {
-	[K in keyof T]: T[K];
+export type Prettify<T> = {
+	[K in keyof T]: NonNullable<T[K]>;
 };
 
-export type arrowFunction<T extends (...args: Parameters<T>) => ReturnType<T>> = (
-	...args: Parameters<T>
+export type arrowFunction<T extends (...arguments_: Parameters<T>) => ReturnType<T>> = (
+	...arguments_: Parameters<T>
 ) => ReturnType<T>;
 
 export type ErrorTypesCatched =
@@ -17,13 +17,13 @@ export type ErrorTypesCatched =
 
 export type TMyError<T = NonNullable<unknown>> = T & {
 	code?: number | string;
-	message?: {
-		user?: string;
-		dev?: string;
-	};
 	hint?: {
-		user?: string;
 		dev?: string;
+		user?: string;
+	};
+	message?: {
+		dev?: string;
+		user?: string;
 	};
 };
 
@@ -36,7 +36,7 @@ export type TMyHandler<
 	CustomError,
 	T extends Record<number | string, { code: string & unknown }> & TMyErrorList<CustomError>
 > = Partial<{
-	[K in T[keyof T]["code"]]: (...args: K[]) => TFunctionReturn<unknown>;
+	[K in T[keyof T]["code"]]: (...arguments_: K[]) => TFunctionReturn<unknown>;
 }>;
 // export type TMyHandler<,T extends TMyErrorList<CustomError>> = Partial<{
 // 	[K in T[keyof T]["code"]]: (...args: K[]) => TFunctionReturn<unknown>;

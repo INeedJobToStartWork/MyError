@@ -17,10 +17,12 @@ const ErrorList = {
 export const myErrorHandler =
 	<T extends keyof K, K extends Record<T, K[T]>>(errorCode: T, errorSolutions: K) =>
 	(...args: Parameters<K[T]>): Prettify<TFunctionReturn<ReturnType<K[T]>>> => {
+		// eslint-disable-next-line @EslintSecurity/detect-object-injection
 		if (!(errorCode in errorSolutions) && errorSolutions[errorCode]) return [ErrorList.noKeyInList, true];
 		try {
+			// eslint-disable-next-line @EslintSecurity/detect-object-injection
 			const [data, error] = myErrorWrapper(errorSolutions[errorCode])(...args);
-			if (error) throw new Error();
+			if (error) throw new Error("Error!");
 			return data as K[T];
 		} catch {
 			return [ErrorList.executionError, true];

@@ -7,5 +7,5 @@
 			"@/*": ["*", "*/index.ts", "*.ts"]
 		}
 	},
-	"extends": "./config/tsconfig/base.json"
+	"extends": "@ineedj/tsconfig/base.json"
 }

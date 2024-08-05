@@ -31,7 +31,7 @@ export const readFileHandler = {
 } as const satisfies TMyHandler<NonNullable<unknown>, typeof ErrorList>;
 
 export const readFile = (path: string): TFunctionReturn<string> => {
-	const finalPath = join(__dirname, path);
+	const finalPath = join(import.meta.dirname, path);
 	if (!existsSync(finalPath)) return [ErrorList.notFound, true];
 	const [result, error] = myErrorWrapper(readFileSync)(finalPath);
 	if (error) return [ErrorList.cantRead, true];

@@ -1,3 +1,4 @@
+// eslint-disable-next-line @EslintImports/no-deprecated, @EslintImports/namespace
 import { expect, it } from "vitest";
 
 import { readFile } from "./readFile";
@@ -44,7 +45,7 @@ it("", () => {
 
 	const functionTOP = () => {
 		function testa(arg: string) {
-			console.log("TEST ", arg);
+			console.log("TEST", arg);
 			return arg;
 		}
 		const finalPrompt = "Test";

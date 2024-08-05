@@ -1,4 +1,5 @@
-import prettierConfig from "./config/prettierrc/.prettierrc.json" assert { type: "json" };
+import prettierConfig from "@ineedj/prettierrc";
+
 export default {
 	...prettierConfig
 };

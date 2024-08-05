@@ -6,7 +6,7 @@ export class MyError<TCustom = NonNullable<unknown>> {
 	public hint: TMyError<TCustom>["hint"];
 	public message: TMyError<TCustom>["message"];
 	public name: TMyError<TCustom>["name"];
-	constructor(private error: Required<TMyError<TCustom>>) {
+	constructor(error: Required<TMyError<TCustom>>) {
 		this.message = error.message;
 		this.code = error.code;
 		this.hint = error.hint;

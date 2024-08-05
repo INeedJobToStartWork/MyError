@@ -21,4 +21,4 @@ export default ineedj({
 		yaml: false,
 		ignoreGlobalFiles: { gitIgnore: true, basicIgnores: true }
 	}
-});
+}).removeRules("@typescript-eslint/no-throw-literal" /** Use custom Error */);

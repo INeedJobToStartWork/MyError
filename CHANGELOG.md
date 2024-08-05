@@ -1,5 +1,11 @@
 # oh-my-error
 
+## 1.1.0
+
+### Minor Changes
+
+- add new Exception `MyError` which require params `TMyError` and add new property to `TmyError` - `name`
+
 ## 1.0.0
 
 Release!🎉

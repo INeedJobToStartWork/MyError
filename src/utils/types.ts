@@ -25,6 +25,7 @@ export type TMyError<T = NonNullable<unknown>> = T & {
 		dev?: string;
 		user?: string;
 	};
+	name?: string;
 };
 
 export type TDataReturn<T> = [T, false];

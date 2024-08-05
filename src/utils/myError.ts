@@ -1,7 +1,7 @@
 import type { TMyError } from "./types";
 
 // export const MyError = <TCustom = NonNullable<unknown>>(error: TMyError<TCustom>): TMyError<TCustom> => error;
-class MyError<TCustom = NonNullable<unknown>> {
+export class MyError<TCustom = NonNullable<unknown>> {
 	public code: TMyError<TCustom>["code"];
 	public hint: TMyError<TCustom>["hint"];
 	public message: TMyError<TCustom>["message"];

@@ -1,5 +1,11 @@
 # oh-my-error
 
+## 1.1.1
+
+### Patch Changes
+
+- fix `MyError` export
+
 ## 1.1.0
 
 ### Minor Changes

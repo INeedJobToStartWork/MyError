@@ -9,6 +9,7 @@ export default ineedj({
 		perfectionistSorters: false
 	},
 	syntax: {
+		vitest: true,
 		eslint: true,
 		jsx: false,
 		next: false,

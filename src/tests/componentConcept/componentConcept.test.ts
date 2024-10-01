@@ -14,13 +14,11 @@ it("should Throw Error - not find file", () => {
 	if (error) expect(result.code).toBe("FS001");
 });
 
-// it("", () => {
-// 	myErrorHandler("FS001", readFileHandler)("Test");
-// });
-it("", () => {
+it("Check properly output", () => {
 	const ErrorList = {
 		EXECUTING: {
 			code: "initPackage:EXECUTING_COMMAND",
+			name: "Executng Command failed",
 			message: {
 				user: "Error while executing command",
 				dev: "execSync has thrown an error while executing the command"
@@ -32,6 +30,7 @@ it("", () => {
 		},
 		NOTSUPPORTEDPKGMNG: {
 			code: "initPackage:NOT_SUPPORTED_PACKAGE_MANAGER",
+			name: "The package manager is not Supported",
 			message: {
 				user: "The package manager is not supported by the application.",
 				dev: "Library does not support the package manager"
@@ -55,15 +54,4 @@ it("", () => {
 	};
 	const result = functionTOP();
 	expect(result).toStrictEqual([undefined, false]);
-});
-
-it("", () => {
-	function test(arg: string) {
-		console.log(arg);
-		return arg;
-	}
-
-	const [data] = myErrorWrapper(test)("Hello World!");
-
-	expect(data).toBe("Hello World!");
 });

@@ -220,12 +220,12 @@ const ErrorList = {
 
 There you can find ready error structures.
 
-| Name                      | Description                       | Extends                                                                                               |
-| ------------------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| IMyError `new!`           | Basic Error                       | -                                                                                                     |
-| IMyErrorAPI `new!`        | Basic Error for an API error      | [IMyError](#error-templates-interfaces), [TApiError](#predefined-elements-for-functions-atoms)        |
-| IMyErrorRateLimit `new!`  | API error for RateLimit           | [IMyError](#error-templates-interfaces), [TApiRateLimit](#predefined-elements-for-functions-atoms)    |
-| IMyErrorValidation `new!` | API error for Validation problems | [IMyError](#error-templates-interfaces), [TValidationError](#predefined-elements-for-functions-atoms) |
+| Name                                                                                                      | Description                       | Extends                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| [IMyError](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`           | Basic Error                       | -                                                                                                     |
+| [IMyErrorAPI](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`        | Basic Error for an API error      | [IMyError](#error-templates-interfaces), [TApiError](#predefined-elements-for-functions-atoms)        |
+| [IMyErrorRateLimit](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`  | API error for RateLimit           | [IMyError](#error-templates-interfaces), [TApiRateLimit](#predefined-elements-for-functions-atoms)    |
+| [IMyErrorValidation](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!` | API error for Validation problems | [IMyError](#error-templates-interfaces), [TValidationError](#predefined-elements-for-functions-atoms) |
 
 ### Predefined elements for Functions (Atoms) `new!`
 

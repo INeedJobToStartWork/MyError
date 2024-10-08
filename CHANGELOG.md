@@ -1,5 +1,19 @@
 # oh-my-error
 
+## 2.0.0-prerelease.0
+
+### Major Changes
+
+- Add new Error Types, New Functions and Features to current existing functions
+- Add `statusCodes` enum.
+- Refactored `MyError` => `myError`, currently it's error object handler before throw.
+- Added new Feature to `myErrorWrapper` - Instant throw error, no need to use condition with `isError` to throw Error.
+- Added `myErrorWrapperAsync` which is `myErrorWrapper` alternative for async functions.
+- Refactored `TMyError` - renamed `TMyError` => `IMyError`, changed from `type` to `interface` and structure.
+- Add new Error (Organism) Interfaces `IMyError`,`IMyErrorAPI`,`IMyErrorRateLimit`,`IMyErrorValidation`
+- Add new Error (Atom) types
+  `TSeverity`,`TSeverity2`,`TErrorMessages`,`TErrorMessagesExt`,`TMyErrorList`,`TErrorList`,`TCauseError`,`TDetails`,`TBaseError`,`TBaseErrorExt`,`TValidationError`,`TApiError`,`TApiRateLimit`,
+
 ## 1.1.1
 
 ### Patch Changes

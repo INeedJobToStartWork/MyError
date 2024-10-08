@@ -22,4 +22,8 @@ export default ineedj({
 		yaml: false,
 		ignoreGlobalFiles: { gitIgnore: true, basicIgnores: true }
 	}
-}).removeRules("@typescript-eslint/no-throw-literal" /** Use custom Error */);
+}).removeRules(
+	"@typescript-eslint/no-throw-literal" /** Use custom Error */,
+	"@EslintSecurity/detect-object-injection",
+	"MD010/no-hard-tabs"
+);

@@ -1,1 +1,1 @@
-Test pass text
+Test file content

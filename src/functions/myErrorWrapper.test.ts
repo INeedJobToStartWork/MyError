@@ -1,7 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { describe, expect, test } from "vitest";
-import myErrorWrapper from "./myErrorWrapper";
-import MyError from "./myError";
-import type { TMyErrorList } from "./types";
+import myErrorWrapper, { myErrorWrapperAsync } from "./myErrorWrapper";
+import { myError } from "./myError";
+import type { TMyErrorList } from "@/types";
 
 describe("[FUNCTION] myErrorWrapper", () => {
 	describe("[PASS]", () => {
@@ -16,6 +20,20 @@ describe("[FUNCTION] myErrorWrapper", () => {
 			const sum = (sum1: number, sum2: number) => sum1 + sum2;
 
 			const [data, isError] = myErrorWrapper(() => sum(1, 2))();
+			expect(isError).toEqual(false);
+			expect(data).toEqual(3);
+		});
+		test("Async Single ()", async () => {
+			const sum = async (sum1: number, sum2: number) => (await sum1) + sum2;
+
+			const [data, isError] = await myErrorWrapperAsync(async () => sum(1, 2))();
+			expect(isError).toEqual(false);
+			expect(data).toEqual(3);
+		});
+		test("Async Double ()", async () => {
+			const sum = async (sum1: number, sum2: number) => (await sum1) + sum2;
+
+			const [data, isError] = await myErrorWrapperAsync(sum)(1, 2);
 			expect(isError).toEqual(false);
 			expect(data).toEqual(3);
 		});
@@ -44,8 +62,7 @@ describe("[FUNCTION] myErrorWrapper", () => {
 				TOO_HIGH_NUMBER: {
 					code: "TOO_HIGH_NUMBER",
 					name: "Num is too high.",
-					message: { dev: "One of numbers is >10" },
-					hint: {}
+					message: "One of numbers is >10"
 				}
 			} satisfies TMyErrorList;
 			const sumMax10 = (sum1: number, sum2: number) => {
@@ -53,10 +70,10 @@ describe("[FUNCTION] myErrorWrapper", () => {
 				return sum1 + sum2;
 			};
 			const [error, isError] = myErrorWrapper(() =>
-				myErrorWrapper(sumMax10, new MyError(MyErrorList.TOO_HIGH_NUMBER))(1, 20)
+				myErrorWrapper(sumMax10, myError(MyErrorList.TOO_HIGH_NUMBER))(1, 20)
 			)();
 			expect(isError).toEqual(true);
-			expect(error).toEqual(new MyError(MyErrorList.TOO_HIGH_NUMBER));
+			expect(error).toEqual(myError(MyErrorList.TOO_HIGH_NUMBER));
 		});
 	});
 });

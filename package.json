@@ -1,6 +1,7 @@
 {
 	"name": "oh-my-error",
-	"version": "1.1.1",
+	"version": "2.0.0-prerelease.0",
+	"private": true,
 	"description": "A simple error handler for nodejs",
 	"keywords": [
 		"error",

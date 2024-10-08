@@ -1,19 +1,31 @@
 ![image](https://github.com/INeedJobToStartWork/MyError/assets/97305201/03fa3e50-af28-4345-a3f7-f84d091b4eb1)
 
 <h1 align="center">MyError</h1>
+<p align="center"><code>🎉2.0.0.prerelease.0🎊</code></p>
 <p align="center"><b>A Very Clean Error Handler!</b></p>
 <div align="center">
 	<a >📗Tutorials (in soon)</a> |
 	<a >📘Docs (in soon)</a> |
-	<a href="">🏗️Contributing Guide</a> 
+	<a href="https://github.com/INeedJobToStartWork/MyError/blob/main/CONTRIBUTING.md">🏗️Contributing Guide</a> 
 </div>
 <hr/>
 
-Benefits:
+About packages:
 
-- All Errors in one Place
-- Easier in Maintaining code (No more `trycatches`)
--
+- 📖 TSDocs (Internal documentation)
+- ♻️ Minified & Compressed
+- ⚠️ Error Handler (`oh-my-error`)
+- ✅ Support JS/TS & CJS/ESM
+
+What you get:
+
+- 🛡️ Type safety
+- 🎯 Centralized error management
+- 🚀 One-line error handling
+- 🧑‍💻👥 Developer and user-friendly error messages
+- 📝 Pre-defined error templates
+- 🏗️ Consistent error structure across your application
+- 🔌 Easy integration with existing codebases
 
 ## **Showcase**
 
@@ -46,8 +58,8 @@ const data = myErrorWrapper(readFile, Error("Cant Load File!"))("...path");
     - [myErrorHandler](#myerrorhandler)
   - [Types](#types-1)
     - [TMyErrorList](#tmyerrorlist)
-    - [Error Templates (Interfaces)](#error-templates-interfaces)
-    - [Predefined elements for Functions (Atoms)](#predefined-elements-for-functions-atoms)
+    - [Error Templates (Interfaces) `new!`](#error-templates-interfaces-new)
+    - [Predefined elements for Functions (Atoms) `new!`](#predefined-elements-for-functions-atoms-new)
 
 ## Install
 
@@ -204,7 +216,7 @@ const ErrorList = {
 } as const satisfies TMyErrorList;
 ```
 
-### Error Templates (Interfaces)
+### Error Templates (Interfaces) `new!`
 
 There you can find ready error structures.
 
@@ -215,14 +227,14 @@ There you can find ready error structures.
 | IMyErrorRateLimit `new!`  | API error for RateLimit           | [IMyError](#error-templates-interfaces), [TApiRateLimit](#predefined-elements-for-functions-atoms)    |
 | IMyErrorValidation `new!` | API error for Validation problems | [IMyError](#error-templates-interfaces), [TValidationError](#predefined-elements-for-functions-atoms) |
 
-### Predefined elements for Functions (Atoms)
+### Predefined elements for Functions (Atoms) `new!`
 
 Short predefined types to easy creating own Error types!
 
-| Name (Col1)              | Name (Col2)             | Name (Col3)           |
-| ------------------------ | ----------------------- | --------------------- |
-| TSeverity `new!`         | TSeverity2 `new!`       | TErrorMessages `new!` |
-| TErrorMessagesExt `new!` | TMyErrorList `new!`     | TErrorList `new!`     |
-| TCauseError `new!`       | TDetails `new!`         | TBaseError `new!`     |
-| TBaseErrorExt `new!`     | TValidationError `new!` | TApiError `new!`      |
-| TApiRateLimit `new!`     |                         |                       |
+| Name (Col1)                                                                                              | Name (Col2)                                                                                             | Name (Col3)                                                                                           |
+| -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| [TSeverity](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`         | [TSeverity2](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`       | [TErrorMessages](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!` |
+| [TErrorMessagesExt](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!` | [TMyErrorList](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`     | [TErrorList](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`     |
+| [TCauseError](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`       | [TDetails](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`         | [TBaseError](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`     |
+| [TBaseErrorExt](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`     | [TValidationError](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!` | [TApiError](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`      |
+| [TApiRateLimit](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`     |                                                                                                         |                                                                                                       |

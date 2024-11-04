@@ -5,7 +5,8 @@
 		"baseUrl": "./src",
 		"paths": {
 			"@/*": ["*", "*/index.ts", "*.ts"]
-		}
+		},
+		"stripInternal": true
 	},
 	"extends": "@ineedj/tsconfig/base.json"
 }

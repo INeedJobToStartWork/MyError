@@ -2,6 +2,7 @@
 import { myError, myErrorWrapperAsync } from "@/functions";
 import type { TMyErrorList } from "@/types";
 
+/** @internal */
 const ErrorList = {
 	noKeyInList: {
 		code: "EH001",

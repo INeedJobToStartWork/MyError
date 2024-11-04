@@ -1,4 +1,5 @@
 import { copy } from "esbuild-plugin-copy";
+import noInternalExportsPlugin from "@esplugins/no-internal-exports";
 import config from "./tsup.base";
 import { defineConfig } from "tsup";
 
@@ -19,6 +20,7 @@ export default defineConfig({
 				{ from: "./.npmignore", to: "./.npmignore" },
 				{ from: "./README.md", to: "./README.md" }
 			]
-		})
+		}),
+		noInternalExportsPlugin
 	]
 });

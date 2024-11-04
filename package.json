@@ -52,6 +52,7 @@
 	},
 	"devDependencies": {
 		"@changesets/cli": "^2.27.8",
+		"@esplugins/no-internal-exports": "^1.0.0",
 		"@ineedj/eslintrc": "^1.2.2",
 		"@ineedj/prettierrc": "^2.0.0",
 		"@ineedj/tsconfig": "^1.0.0",

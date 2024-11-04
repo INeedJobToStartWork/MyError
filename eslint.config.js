@@ -25,5 +25,6 @@ export default ineedj({
 }).removeRules(
 	"@typescript-eslint/no-throw-literal" /** Use custom Error */,
 	"@EslintSecurity/detect-object-injection",
-	"MD010/no-hard-tabs"
+	"MD010/no-hard-tabs",
+	"@EslintTSDocs/syntax"
 );

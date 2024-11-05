@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import type { IMyError } from "@/types";
@@ -57,13 +56,11 @@ type ErrorArgs<T> = {
  * ```
  */
 
-export function myError<T extends NonNullable<unknown> = IMyError>(errorObj: T, args?: ErrorArgs<T>): T {
+export const myError = <T extends NonNullable<unknown> = IMyError>(errorObj: T, args?: ErrorArgs<T>): T => {
 	const result = { ...errorObj };
-
 	if (args) {
 		for (const key in args) {
 			if (!(key in result)) continue; // Check that `key` from args exist in result (errorT)
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 			if (typeof result[key] === "function") {
 				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 				result[key] = (result[key] as (...args: any[]) => any)(...(args[key] as any[])); // TODO: Change this later and remove eslint ignore above
@@ -77,4 +74,4 @@ export function myError<T extends NonNullable<unknown> = IMyError>(errorObj: T, 
 	}
 
 	return result;
-}
+};

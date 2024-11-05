@@ -8,6 +8,9 @@ export default ineedj({
 		stylisticTS: false,
 		perfectionistSorters: false
 	},
+	modifiers: {
+		commands: true
+	},
 	syntax: {
 		vitest: true,
 		eslint: true,

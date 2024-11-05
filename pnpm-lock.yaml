@@ -15,8 +15,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@ineedj/eslintrc':
-        specifier: ^1.2.2
-        version: 1.2.2(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.3.2))(tailwindcss@3.4.7)(typescript@5.3.2)(vitest@2.1.1(@types/node@20.16.10)(stylus@0.57.0))(vue-eslint-parser@9.4.3(eslint@8.57.0))
+        specifier: ^1.2.3
+        version: 1.2.3(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.3.2))(tailwindcss@3.4.7)(typescript@5.3.2)(vitest@2.1.1(@types/node@20.16.10)(stylus@0.57.0))(vue-eslint-parser@9.4.3(eslint@8.57.0))
       '@ineedj/prettierrc':
         specifier: ^2.0.0
         version: 2.0.0(prettier-plugin-packagejson@2.5.1(prettier@3.3.3))(prettier@3.3.3)
@@ -707,8 +707,8 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
 
-  '@ineedj/eslintrc@1.2.2':
-    resolution: {integrity: sha512-I+gu4NKwMJ3+jEdXpkAT9PFj+v9SRcvq4sCXfbdcMq4XsPxF65dIUP+lY6PUEKOYHvSsFGCiAHMeNfK1tc7ldg==}
+  '@ineedj/eslintrc@1.2.3':
+    resolution: {integrity: sha512-lT2Gh+EwQPmRbMdFdXMRgCMf3EgNuh/oL2c9XcNHcpL6lkoVE6dBz3Ty3jCcWe53Bp712vTWldGK+uRdzoiXug==}
 
   '@ineedj/prettierrc@2.0.0':
     resolution: {integrity: sha512-Ag8uMZajNVq0XUY26LG2pnYxYf11tKWm/pCSa9h7e/6oaOfXGF+PovMV5tmImLIbyiyEmJgaqkJFJD6hqtx3Bw==}
@@ -6939,7 +6939,7 @@ snapshots:
 
   '@humanwhocodes/object-schema@2.0.3': {}
 
-  '@ineedj/eslintrc@1.2.2(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.3.2))(tailwindcss@3.4.7)(typescript@5.3.2)(vitest@2.1.1(@types/node@20.16.10)(stylus@0.57.0))(vue-eslint-parser@9.4.3(eslint@8.57.0))':
+  '@ineedj/eslintrc@1.2.3(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.3.2))(tailwindcss@3.4.7)(typescript@5.3.2)(vitest@2.1.1(@types/node@20.16.10)(stylus@0.57.0))(vue-eslint-parser@9.4.3(eslint@8.57.0))':
     dependencies:
       '@next/eslint-plugin-next': 14.2.14
       '@rushstack/eslint-patch': 1.10.4
@@ -7242,8 +7242,6 @@ snapshots:
       putout: 35.37.1(eslint@8.57.0)(typescript@5.3.2)
       try-catch: 3.0.1
       try-to-catch: 3.0.1
-    transitivePeerDependencies:
-      - supports-color
 
   '@putout/engine-loader@14.0.0(putout@36.8.0(eslint@8.57.0)(typescript@5.3.2))':
     dependencies:
@@ -7274,8 +7272,6 @@ snapshots:
       picomatch: 4.0.2
       putout: 35.37.1(eslint@8.57.0)(typescript@5.3.2)
       try-to-catch: 3.0.1
-    transitivePeerDependencies:
-      - supports-color
 
   '@putout/engine-processor@12.0.0(putout@36.8.0(eslint@8.57.0)(typescript@5.3.2))':
     dependencies:
@@ -7294,8 +7290,6 @@ snapshots:
       putout: 35.37.1(eslint@8.57.0)(typescript@5.3.2)
       try-catch: 3.0.1
       try-to-catch: 3.0.1
-    transitivePeerDependencies:
-      - supports-color
 
   '@putout/engine-reporter@2.0.0(putout@36.8.0(eslint@8.57.0)(typescript@5.3.2))':
     dependencies:
@@ -8647,7 +8641,7 @@ snapshots:
   '@stylistic/eslint-plugin-js@2.3.0(eslint@8.57.0)':
     dependencies:
       '@types/eslint': 8.56.12
-      acorn: 8.12.1
+      acorn: 8.14.0
       eslint: 8.57.0
       eslint-visitor-keys: 4.1.0
       espree: 10.2.0
@@ -8660,7 +8654,7 @@ snapshots:
 
   '@stylistic/eslint-plugin-jsx@2.3.0(eslint@8.57.0)':
     dependencies:
-      '@stylistic/eslint-plugin-js': 2.3.0(eslint@8.57.0)
+      '@stylistic/eslint-plugin-js': 2.8.0(eslint@8.57.0)
       '@types/eslint': 8.56.12
       eslint: 8.57.0
       estraverse: 5.3.0
@@ -9169,9 +9163,13 @@ snapshots:
     dependencies:
       acorn: 8.12.1
 
-  acorn-typescript@1.4.13(acorn@8.12.1):
+  acorn-jsx@5.3.2(acorn@8.14.0):
     dependencies:
-      acorn: 8.12.1
+      acorn: 8.14.0
+
+  acorn-typescript@1.4.13(acorn@8.14.0):
+    dependencies:
+      acorn: 8.14.0
 
   acorn@8.12.1: {}
 
@@ -10079,8 +10077,8 @@ snapshots:
 
   eslint-mdx@3.1.5(eslint@8.57.0):
     dependencies:
-      acorn: 8.12.1
-      acorn-jsx: 5.3.2(acorn@8.12.1)
+      acorn: 8.14.0
+      acorn-jsx: 5.3.2(acorn@8.14.0)
       eslint: 8.57.0
       espree: 9.6.1
       estree-util-visit: 2.0.0
@@ -11288,8 +11286,8 @@ snapshots:
       '@putout/plugin-logical-expressions': 6.0.0(putout@36.8.0(eslint@8.57.0)(typescript@5.3.2))
       '@putout/plugin-try-catch': 4.0.0(putout@36.8.0(eslint@8.57.0)(typescript@5.3.2))
       '@putout/printer': 9.18.0
-      acorn: 8.12.1
-      acorn-typescript: 1.4.13(acorn@8.12.1)
+      acorn: 8.14.0
+      acorn-typescript: 1.4.13(acorn@8.14.0)
       estree-to-babel: 9.1.0
       estree-util-attach-comments: 3.0.0
       putout: 36.8.0(eslint@8.57.0)(typescript@5.3.2)
@@ -11679,7 +11677,7 @@ snapshots:
 
   jsonc-eslint-parser@2.4.0:
     dependencies:
-      acorn: 8.12.1
+      acorn: 8.14.0
       eslint-visitor-keys: 3.4.3
       espree: 9.6.1
       semver: 7.6.3
@@ -12060,8 +12058,8 @@ snapshots:
 
   micromark-extension-mdxjs@3.0.0:
     dependencies:
-      acorn: 8.12.1
-      acorn-jsx: 5.3.2(acorn@8.12.1)
+      acorn: 8.14.0
+      acorn-jsx: 5.3.2(acorn@8.14.0)
       micromark-extension-mdx-expression: 3.0.0
       micromark-extension-mdx-jsx: 3.0.1
       micromark-extension-mdx-md: 2.0.0

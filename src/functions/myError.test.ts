@@ -1,4 +1,3 @@
-/* eslint-disable @EslintSonar/no-duplicate-string */
 import { describe, it, expect } from "vitest";
 import { myError } from "./myError";
 import type { IMyError, TMyErrorList } from "@/types";

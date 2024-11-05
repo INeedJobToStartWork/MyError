@@ -1,43 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { describe, expect, test } from "vitest";
-import myErrorWrapper, { myErrorWrapperAsync } from "./myErrorWrapper";
+import { myErrorWrapper } from "./myErrorWrapper";
 import { myError } from "./myError";
 import type { TMyErrorList } from "@/types";
 
 describe("[FUNCTION] myErrorWrapper", () => {
-	describe("[PASS]", () => {
-		test("Double ()", () => {
-			const sum = (sum1: number, sum2: number) => sum1 + sum2;
-
-			const [data, isError] = myErrorWrapper(sum)(1, 2);
-			expect(isError).toEqual(false);
-			expect(data).toEqual(3);
-		});
-		test("Single ()", () => {
-			const sum = (sum1: number, sum2: number) => sum1 + sum2;
-
-			const [data, isError] = myErrorWrapper(() => sum(1, 2))();
-			expect(isError).toEqual(false);
-			expect(data).toEqual(3);
-		});
-		test("Async Single ()", async () => {
-			const sum = async (sum1: number, sum2: number) => (await sum1) + sum2;
-
-			const [data, isError] = await myErrorWrapperAsync(async () => sum(1, 2))();
-			expect(isError).toEqual(false);
-			expect(data).toEqual(3);
-		});
-		test("Async Double ()", async () => {
-			const sum = async (sum1: number, sum2: number) => (await sum1) + sum2;
-
-			const [data, isError] = await myErrorWrapperAsync(sum)(1, 2);
-			expect(isError).toEqual(false);
-			expect(data).toEqual(3);
-		});
-	});
 	describe("[ERROR]", () => {
 		test("Double ()", () => {
 			const errorFunc = () => {
@@ -74,6 +40,36 @@ describe("[FUNCTION] myErrorWrapper", () => {
 			)();
 			expect(isError).toEqual(true);
 			expect(error).toEqual(myError(MyErrorList.TOO_HIGH_NUMBER));
+		});
+	});
+	describe("[PASS]", () => {
+		test("Double ()", () => {
+			const sum = (sum1: number, sum2: number) => sum1 + sum2;
+
+			const [data, isError] = myErrorWrapper(sum)(1, 2);
+			expect(isError).toEqual(false);
+			expect(data).toEqual(3);
+		});
+		test("Single ()", () => {
+			const sum = (sum1: number, sum2: number) => sum1 + sum2;
+
+			const [data, isError] = myErrorWrapper(() => sum(1, 2))();
+			expect(isError).toEqual(false);
+			expect(data).toEqual(3);
+		});
+		test("Async Single ()", async () => {
+			const sum = async (sum1: number, sum2: number) => (await sum1) + sum2;
+
+			const [data, isError] = await myErrorWrapper(async () => sum(1, 2))();
+			expect(isError).toEqual(false);
+			expect(data).toEqual(3);
+		});
+		test("Async Double ()", async () => {
+			const sum = async (sum1: number, sum2: number) => (await sum1) + sum2;
+
+			const [data, isError] = await myErrorWrapper(sum)(1, 2);
+			expect(isError).toEqual(false);
+			expect(data).toEqual(3);
 		});
 	});
 });

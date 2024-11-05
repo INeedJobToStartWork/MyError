@@ -47,7 +47,6 @@ export type TMyHandler<
 // export type TMyHandler<T extends TMyErrorList> = Partial<{
 // 	[K in T[keyof T]["code"]]: (...args: K[]) => TFunctionReturn<unknown>;
 // }>;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 /** @dontexport */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type NoInfer<T> = [T][T extends any ? 0 : never];

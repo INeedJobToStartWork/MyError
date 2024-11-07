@@ -1,5 +1,12 @@
 # oh-my-error
 
+## 2.0.0-prerelease.1
+
+### Minor Changes
+
+- `myErrorWrapperAsync` implemented to current `myErrorWrapper`
+- `myErrorWrapperAsync` removed
+
 ## 2.0.0-prerelease.0
 
 ### Major Changes

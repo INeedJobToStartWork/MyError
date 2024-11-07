@@ -1,38 +1,44 @@
-import type { ErrorTypesCatched, arrowFunction } from "@/types/internal";
+/* eslint-disable @typescript-eslint/promise-function-async */
+/* eslint-disable @typescript-eslint/return-await */
+import type { ErrorTypesCatched, TFunction, TIsPromise, UnwrapPromise } from "@/types/internal";
 
-type MyErrorWrapperReturn<T extends arrowFunction<T>, errorType> = errorType extends undefined
-	? [ErrorTypesCatched, true] | [ReturnType<T>, false]
-	: ReturnType<T>;
+//----------------------
+// Types
+//----------------------
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyFunction = (...args: any[]) => any;
+
+type MyErrorWrapperReturn<Fn extends AnyFunction, ErrorType = undefined> = ErrorType extends undefined
+	? TIsPromise<ReturnType<Fn>> extends true
+		? Promise<[ErrorTypesCatched, true] | [UnwrapPromise<ReturnType<Fn>>, false]>
+		: [ErrorTypesCatched, true] | [ReturnType<Fn>, false]
+	: ReturnType<Fn>;
+
+//----------------------
+// Functions
+//----------------------
 
 export const myErrorWrapper =
-	<T extends arrowFunction<T>, ErrorType = undefined>(
-		fnThatMayThrow: T,
+	<Fn extends TFunction<Fn>, ErrorType = undefined>(
+		fnThatMayThrow: Fn,
 		errorToThrow?: ErrorType
-	): ((...args: Parameters<T>) => MyErrorWrapperReturn<T, ErrorType>) =>
-	(...args: Parameters<T>) => {
+	): ((...args: Parameters<Fn>) => MyErrorWrapperReturn<Fn, ErrorType>) =>
+	(...args: Parameters<Fn>): MyErrorWrapperReturn<Fn, ErrorType> => {
+		const returnFNOutput = <G>(result: G) =>
+			(errorToThrow ? result : [result, false]) as MyErrorWrapperReturn<Fn, ErrorType>;
+		const returnError = (error: unknown) => {
+			if (errorToThrow) throw errorToThrow;
+			return [error as ErrorTypesCatched, true] as MyErrorWrapperReturn<Fn, ErrorType>;
+		};
+
 		try {
 			const result = fnThatMayThrow(...args);
-
-			return (errorToThrow ? result : [result, false]) as MyErrorWrapperReturn<T, ErrorType>;
+			return result instanceof Promise
+				? (result.then(returnFNOutput).catch(returnError) as MyErrorWrapperReturn<Fn, ErrorType>)
+				: returnFNOutput(result);
 		} catch (error) {
-			if (errorToThrow) throw errorToThrow;
-			return [error as ErrorTypesCatched, true] as MyErrorWrapperReturn<T, ErrorType>;
-		}
-	};
-
-// TODO: DO NOT REPEAT CODE
-export const myErrorWrapperAsync =
-	<T extends arrowFunction<T>, ErrorType = undefined>(
-		fnThatMayThrow: T,
-		errorToThrow?: ErrorType
-	): ((...args: Parameters<T>) => Promise<MyErrorWrapperReturn<T, ErrorType>>) =>
-	async (...args: Parameters<T>) => {
-		try {
-			const result = await fnThatMayThrow(...args);
-			return (errorToThrow ? result : [result, false]) as MyErrorWrapperReturn<T, ErrorType>;
-		} catch (error) {
-			if (errorToThrow) throw errorToThrow;
-			return [error as ErrorTypesCatched, true] as MyErrorWrapperReturn<T, ErrorType>;
+			return returnError(error);
 		}
 	};
 

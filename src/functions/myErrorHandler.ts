@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/promise-function-async */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { myError, myErrorWrapperAsync } from "@/functions";
+import { myError, myErrorWrapper } from "@/functions";
 import type { TMyErrorList } from "@/types";
 
 /** @internal */
@@ -37,16 +38,16 @@ const ErrorList = {
  */
 export const myErrorHandler =
 	<T extends keyof K, K extends Record<T, K[T]>>(errorCode: T, errorSolutions: K) =>
-	async (...args: Parameters<K[T]>): Promise<ReturnType<K[T]>> => {
+	// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+	(...args: Parameters<K[T]>) => {
 		if (!(errorCode in errorSolutions)) {
 			throw myError(ErrorList.noKeyInList, { message: { dev: [errorCode.toString()] } });
 		}
 
-		return myErrorWrapperAsync(
+		return myErrorWrapper(
 			errorSolutions[errorCode],
 			myError(ErrorList.executionError, { hint: { dev: [errorCode.toString(), args] } })
 		)(...args);
 	};
 
-// TODO: Maybe add Sync Alternative, but this works for everything
 export default myErrorHandler;

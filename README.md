@@ -1,7 +1,7 @@
 ![image](https://github.com/INeedJobToStartWork/MyError/assets/97305201/03fa3e50-af28-4345-a3f7-f84d091b4eb1)
 
 <h1 align="center">MyError</h1>
-<p align="center"><code>🎉2.0.0.prerelease.0🎊</code></p>
+<p align="center"><code>🎉2.0.0.prerelease.1🎊</code></p>
 <p align="center"><b>A Very Clean Error Handler!</b></p>
 <div align="center">
 	<a >📗Tutorials (in soon)</a> |
@@ -10,7 +10,7 @@
 </div>
 <hr/>
 
-About packages:
+About package:
 
 - 📖 TSDocs (Internal documentation)
 - ♻️ Minified & Compressed
@@ -20,9 +20,9 @@ About packages:
 What you get:
 
 - 🛡️ Type safety
-- 🎯 Centralized error management
 - 🚀 One-line error handling
-- 🧑‍💻👥 Developer and user-friendly error messages
+- 🎯 Centralized error management
+- 🧑‍💻👥 Error messages for Developers and users!
 - 📝 Pre-defined error templates
 - 🏗️ Consistent error structure across your application
 - 🔌 Easy integration with existing codebases
@@ -53,7 +53,7 @@ const data = myErrorWrapper(readFile, Error("Cant Load File!"))("...path");
     - [Types](#types)
   - [Functions](#functions-1)
     - [myError `♻️ Refactored`](#myerror-️-refactored)
-    - [myErrorWrapper/Async `🎉 New feature!`](#myerrorwrapperasync--new-feature)
+    - [myErrorWrapper `🎉 New feature!`](#myerrorwrapper--new-feature)
     - [myErrorCatcher](#myerrorcatcher)
     - [myErrorHandler](#myerrorhandler)
   - [Types](#types-1)
@@ -134,9 +134,9 @@ throw new myError(MyErrorList.BLACKLISTED, { message: ["nameInputed"] });
 }
 ```
 
-### myErrorWrapper/Async `🎉 New feature!`
+### myErrorWrapper `🎉 New feature!`
 
-`trycatch` wrapper with instant error thrower.
+`trycatch` one line wrapper with instant error thrower.
 
 ```ts
 // Before
@@ -155,6 +155,14 @@ if(isError) throw new Error("Can't read file!")
 // Or instant Error Throw
 
 const data = myErrorWrapper(readFile,new Error("Can't read file!"))("path...");
+
+```
+
+> [!TIP] Async Functions  
+> At async function it returns Promise, just use `await` to solve that
+
+```ts
+const data = await myErrorWrapper(asyncFun, new Error("Oh, Error!"))("MyString");
 ```
 
 ### myErrorCatcher

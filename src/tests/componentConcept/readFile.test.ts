@@ -5,7 +5,7 @@ import { myError, myErrorWrapper } from "@/functions";
 
 describe("[FUNCTION] readFile", () => {
 	const testFilePath = join(import.meta.dirname, "/fileToRead.txt");
-	const testFileContent = "Test file content\n";
+	const testFileContent = "Test file content\r\n";
 
 	it("should successfully read a file", () => {
 		const result = readFile(testFilePath);

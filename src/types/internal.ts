@@ -50,3 +50,21 @@ export type TMyHandler<
 /** @dontexport */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type NoInfer<T> = [T][T extends any ? 0 : never];
+
+/** @dontexport */
+export type TFunctionAsync<T extends (...arguments_: Parameters<T>) => ReturnType<T>> = (
+	...arguments_: Parameters<T>
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+) => Promise<any>;
+/** @dontexport */
+export type TFunctionSync<T extends (...arguments_: Parameters<T>) => ReturnType<T>> = (
+	...arguments_: Parameters<T>
+) => ReturnType<T>;
+/** @dontexport */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type TFunction<T extends (...args: any[]) => any> = TFunctionAsync<T> | TFunctionSync<T>;
+/** @dontexport */
+export type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
+/** @dontexport */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type TIsPromise<T> = T extends Promise<any> ? true : false;

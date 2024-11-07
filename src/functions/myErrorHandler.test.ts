@@ -1,12 +1,11 @@
-import { readFile, ErrorList as readErrorList } from "@/tests/componentConcept/readFile";
 import { describe, expect, it } from "vitest";
-import myErrorWrapper from "./myErrorWrapper";
-import { myError } from "./myError";
+
 import { join } from "node:path";
-import myErrorHandler from "./myErrorHandler";
+import { myError, myErrorWrapper, myErrorHandler } from "@/functions";
+import { ErrorList as readErrorList, readFile } from "@/tests/componentConcept/readFile";
 
 describe("[FUNCTION] myErrorHandler", () => {
-	it("ased", async () => {
+	it("ased", () => {
 		const pathToFile = join(import.meta.dirname, "./OLOLOLOLOLO");
 		const [data, isError] = myErrorWrapper(readFile)(pathToFile);
 
@@ -19,7 +18,8 @@ describe("[FUNCTION] myErrorHandler", () => {
 				return true;
 			}
 		};
-		const test = await myErrorHandler("FS001", MyErrorHandlerList)();
+
+		const test = myErrorHandler("FS001", MyErrorHandlerList)();
 		expect(test).toBe(true);
 	});
 });

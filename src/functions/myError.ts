@@ -11,15 +11,13 @@ type ErrorObject = Record<string, unknown>;
 /**
  * Helper type to extract function parameters or never for non-functions.
  */
-// type FunctionParameters<T> = T extends (...args: unknown[]) => unknown ? Parameters<T> : never;
+type FunctionParameters<T> = T extends (...args: any[]) => any ? Parameters<T> : never;
 
 /**
  * Type representing the structure of arguments for the myError function.
  * Maps each key from T to an array of parameters if the value is a function,
  * or recursively to the same type if the value is an object.
  */
-
-type FunctionParameters<T> = T extends (...args: any[]) => any ? Parameters<T> : never;
 
 type ErrorArgs<T> = {
 	[K in keyof T]?: T[K] extends (...args: any[]) => any

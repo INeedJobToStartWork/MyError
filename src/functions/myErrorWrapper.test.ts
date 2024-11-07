@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/require-await */
 import { describe, expect, test } from "vitest";
 import { myErrorWrapper } from "./myErrorWrapper";
 import { myError } from "./myError";
@@ -23,7 +24,25 @@ describe("[FUNCTION] myErrorWrapper", () => {
 			expect(isError).toEqual(true);
 			expect(data).toEqual(new Error("AHA"));
 		});
-		test("Instant throw MyError if Error", () => {
+		test("Async Double ()", async () => {
+			const errorFunc = async () => {
+				throw new Error("AHA");
+			};
+
+			const [data, isError] = await myErrorWrapper(errorFunc)();
+			expect(isError).toEqual(true);
+			expect(data).toEqual(new Error("AHA"));
+		});
+		test("Async Single ()", async () => {
+			const errorFunc = async () => {
+				throw new Error("AHA");
+			};
+
+			const [data, isError] = await myErrorWrapper(async () => errorFunc())();
+			expect(isError).toEqual(true);
+			expect(data).toEqual(new Error("AHA"));
+		});
+		test("Instant throw MyError if Error", async () => {
 			const MyErrorList = {
 				TOO_HIGH_NUMBER: {
 					code: "TOO_HIGH_NUMBER",
@@ -35,7 +54,7 @@ describe("[FUNCTION] myErrorWrapper", () => {
 				if (sum1 > 10 || sum2 > 10) throw new Error("sum1 or sum2 is higher than 10!");
 				return sum1 + sum2;
 			};
-			const [error, isError] = myErrorWrapper(() =>
+			const [error, isError] = await myErrorWrapper(async () =>
 				myErrorWrapper(sumMax10, myError(MyErrorList.TOO_HIGH_NUMBER))(1, 20)
 			)();
 			expect(isError).toEqual(true);
@@ -53,6 +72,7 @@ describe("[FUNCTION] myErrorWrapper", () => {
 		test("Single ()", () => {
 			const sum = (sum1: number, sum2: number) => sum1 + sum2;
 
+			// const [data, isError] = myErrorWrapper(() => sum)();
 			const [data, isError] = myErrorWrapper(() => sum(1, 2))();
 			expect(isError).toEqual(false);
 			expect(data).toEqual(3);

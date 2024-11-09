@@ -1,0 +1,8 @@
+{
+	"mode": "pre",
+	"tag": "prerelease.2",
+	"initialVersions": {
+		"oh-my-error": "2.0.0-prerelease.1"
+	},
+	"changesets": ["short-eels-sparkle"]
+}

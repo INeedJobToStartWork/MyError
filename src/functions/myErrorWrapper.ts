@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/promise-function-async */
-/* eslint-disable @typescript-eslint/return-await */
 import type { ErrorTypesCatched, TFunction, TIsPromise, UnwrapPromise } from "@/types/internal";
 
 //----------------------
@@ -19,6 +17,24 @@ type MyErrorWrapperReturn<Fn extends AnyFunction, ErrorType = undefined> = Error
 // Functions
 //----------------------
 
+/**
+ * TryCatch One line wrapper.
+ *
+ * @params errorToThrow - If `fnThatMayThrow` throw error, this will be instant throwed.
+ * @returns Tuple `[data,isError]`, with `errorToThrow` just `data`.
+ *
+ * @example
+ * ```
+ * // For Async add `await` before `myErrorWrapper`
+ * const [data,isError] = myErrorWrapper(readFile)("path...");
+ * if(isError) throw new Error("Can't read file!")
+ *
+ *
+ * // Or instant Error Throw (with errorToThrow)
+ *
+ * const data = myErrorWrapper(readFile,new Error("Can't read file!"))("path...");
+ * ```
+ */
 export const myErrorWrapper =
 	<Fn extends TFunction<Fn>, ErrorType = undefined>(
 		fnThatMayThrow: Fn,
@@ -27,6 +43,7 @@ export const myErrorWrapper =
 	(...args: Parameters<Fn>): MyErrorWrapperReturn<Fn, ErrorType> => {
 		const returnFNOutput = <G>(result: G) =>
 			(errorToThrow ? result : [result, false]) as MyErrorWrapperReturn<Fn, ErrorType>;
+
 		const returnError = (error: unknown) => {
 			if (errorToThrow) throw errorToThrow;
 			return [error as ErrorTypesCatched, true] as MyErrorWrapperReturn<Fn, ErrorType>;

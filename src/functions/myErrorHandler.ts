@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/promise-function-async */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { myError, myErrorWrapper } from "@/functions";
 import type { TMyErrorList } from "@/types";
 
@@ -29,11 +27,24 @@ const ErrorList = {
  * @param errorCode - The error code to handle.
  * @param errorSolutions - An object containing error handling functions, keyed by error codes.
  *
- * @returns An async function that:
+ * @returns An sync function that:
  *   1. Checks if the error code exists in the solutions.
  *   2. If not, throws a "noKeyInList" error.
  *   3. If it exists, executes the corresponding error solution function.
- *   4. Wraps the execution in a try-catch block to handle any errors during execution.
+ *   4. Wraps the execution in a try-catch block (myErrorWrapper) to handle any errors during execution.
+ *
+ * @example
+ * ```
+ * const [data, isError] = myErrorWrapper(readFile)("./ReadThisFile");
+ *
+ * const MyErrorHandlerList = {
+ * 	FS001: () => {
+ * 		// Do this code if throw this error
+ * 		console.error("ERROR");
+ * 	}
+ * };
+ * if (isError) myErrorHandler(data.code, MyErrorHandlerList)();
+ * ```
  *
  */
 export const myErrorHandler =

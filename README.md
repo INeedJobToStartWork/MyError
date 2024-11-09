@@ -47,19 +47,19 @@ const data = myErrorWrapper(readFile, Error("Cant Load File!"))("...path");
 # 📜 List of Contest
 
 - [📜 List of Contest](#-list-of-contest)
-  - [Install](#install)
-  - [TLDR (Only Most Important!)](#tldr-only-most-important)
-    - [Functions](#functions)
-    - [Types](#types)
-  - [Functions](#functions-1)
-    - [myError `♻️ Refactored`](#myerror-️-refactored)
-    - [myErrorWrapper `🎉 New feature!`](#myerrorwrapper--new-feature)
-    - [myErrorCatcher](#myerrorcatcher)
-    - [myErrorHandler](#myerrorhandler)
-  - [Types](#types-1)
-    - [TMyErrorList](#tmyerrorlist)
-    - [Error Templates (Interfaces) `new!`](#error-templates-interfaces-new)
-    - [Predefined elements for Functions (Atoms) `new!`](#predefined-elements-for-functions-atoms-new)
+	- [Install](#install)
+	- [TLDR (Only Most Important!)](#tldr-only-most-important)
+		- [Functions](#functions)
+		- [Types](#types)
+	- [Functions](#functions-1)
+		- [myError `♻️ Refactored`](#myerror-️-refactored)
+		- [myErrorWrapper `🎉 New feature!`](#myerrorwrapper--new-feature)
+		- [myErrorCatcher](#myerrorcatcher)
+		- [myErrorHandler](#myerrorhandler)
+	- [Types](#types-1)
+		- [TMyErrorList](#tmyerrorlist)
+		- [Error Templates (Interfaces) `new!`](#error-templates-interfaces-new)
+		- [Predefined elements for Functions (Atoms) `new!`](#predefined-elements-for-functions-atoms-new)
 
 ## Install
 
@@ -136,7 +136,7 @@ throw new myError(MyErrorList.BLACKLISTED, { message: ["nameInputed"] });
 
 ### myErrorWrapper `🎉 New feature!`
 
-`trycatch` one line wrapper with instant error thrower.
+`TryCatch` one line wrapper with instant error thrower.
 
 ```ts
 // Before
@@ -165,6 +165,7 @@ const data = myErrorWrapper(readFile,new Error("Can't read file!"))("path...");
 const data = await myErrorWrapper(asyncFun, new Error("Oh, Error!"))("MyString");
 ```
 
+
 ### myErrorCatcher
 
 `new Promise` wrapper.
@@ -189,7 +190,7 @@ const MyErrorHandlerList = {
 		console.error("ERROR");
 	}
 };
-if (isError) await myErrorHandler(data.code, MyErrorHandlerList)();
+if (isError) myErrorHandler(data.code, MyErrorHandlerList)();
 ```
 
 ## Types
@@ -245,4 +246,4 @@ Short predefined types to easy creating own Error types!
 | [TErrorMessagesExt](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!` | [TMyErrorList](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`     | [TErrorList](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`     |
 | [TCauseError](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`       | [TDetails](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`         | [TBaseError](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`     |
 | [TBaseErrorExt](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`     | [TValidationError](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!` | [TApiError](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`      |
-| [TApiRateLimit](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`     |                                                                                                         |                                                                                                       |
+| [TApiRateLimit](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/errors.ts) `new!`     | [StatusCodes](https://github.com/INeedJobToStartWork/MyError/blob/main/src/types/statusCodes.ts)`new!`                                                                                                        |                                                                                                       |

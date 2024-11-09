@@ -16,6 +16,9 @@ export type TSeverity = "ERROR" | "WARNING";
  */
 export type TSeverity2 = "CRITICAL" | "HIGH" | "LOW" | "MEDIUM";
 
+/**
+ * Predefined element for Custom Templates
+ */
 export type TErrorMessages =
 	| string
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -71,7 +74,7 @@ export type TErrorList<T> = {
 };
 
 /**
- * Perfect for throwing catched error by trycatch
+ * Perfect for throwing catched error by TryCatch
  */
 export type TCauseError = {
 	cause?: unknown;
@@ -79,16 +82,25 @@ export type TCauseError = {
 export type TDetails<T = unknown> = {
 	details?: T;
 };
+/**
+ * Predefined element for Custom Templates
+ */
 export type TBaseError = {
 	message?: Parameters<typeof Error>[0];
 	options?: Parameters<typeof Error>[1];
 };
 
+/**
+ * Predefined Type for `Error`
+ */
 export type TBaseErrorExt = {
 	message?: TErrorMessages;
 	options?: TCauseError;
 };
 
+/**
+ * Predefined element for Custom Templates
+ */
 export type TValidationError = {
 	fields: Array<{
 		[K: string]: unknown;
@@ -102,6 +114,9 @@ export type TValidationError = {
 	}>;
 };
 
+/**
+ * Predefined element for Custom Templates
+ */
 export type TApiError = {
 	endpoint?: string;
 	path?: string;
@@ -109,6 +124,9 @@ export type TApiError = {
 	timestamp?: Date;
 };
 
+/**
+ * Predefined element for Custom Templates
+ */
 export type TApiRateLimit = {
 	limit?: number;
 	remaining?: number;
@@ -117,6 +135,10 @@ export type TApiRateLimit = {
 	status?: StatusCode | number;
 };
 
+/**
+ * Basic Error Template for Error
+ * @author oh-my-error
+ */
 export interface IMyError {
 	code?: number | string;
 	hint?: TErrorMessagesExt;
@@ -124,8 +146,22 @@ export interface IMyError {
 	name?: string;
 }
 
+/**
+ * Basic Error Template for **API**
+ */
 export interface IMyErrorAPI extends IMyError, TApiError {}
+
+/**
+ * Basic Error Template for **API Rate limit**
+ */
 export interface IMyErrorRateLimit extends IMyError, TApiRateLimit {}
+
+/**
+ * Basic Error Template for **Validation**
+ */
 export interface IMyErrorValidation extends IMyError, TValidationError {}
 
+/**
+ * Include Every Error Template
+ */
 export type TAllMyErrorTypes = IMyError | IMyErrorAPI | IMyErrorRateLimit | IMyErrorValidation;

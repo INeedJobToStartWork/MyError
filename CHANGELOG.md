@@ -1,5 +1,13 @@
 # oh-my-error
 
+## 2.0.0-prerelease.2
+
+### Patch Changes
+
+- Add type `StatusCode`
+- Add missing TSDocs
+- Change enum StatusCode to object
+
 ## 2.0.0-prerelease.1
 
 ### Minor Changes

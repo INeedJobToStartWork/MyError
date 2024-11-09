@@ -3,6 +3,10 @@
 
 import type { IMyError } from "@/types";
 
+//----------------------
+// Types
+//----------------------
+
 /**
  * Represents an error object that may contain nested objects and functions.
  */
@@ -26,6 +30,10 @@ type ErrorArgs<T> = {
 			? ErrorArgs<T[K]>
 			: T[K];
 };
+
+//----------------------
+// Functions
+//----------------------
 
 /**
  * Processes an error object, invoking functions with provided arguments

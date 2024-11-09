@@ -1,7 +1,7 @@
 ![image](https://github.com/INeedJobToStartWork/MyError/assets/97305201/03fa3e50-af28-4345-a3f7-f84d091b4eb1)
 
 <h1 align="center">MyError</h1>
-<p align="center"><code>🎉2.0.0.prerelease.1🎊</code></p>
+<p align="center"><code>🎉2.0.0.prerelease.2🎊</code></p>
 <p align="center"><b>A Very Clean Error Handler!</b></p>
 <div align="center">
 	<a >📗Tutorials (in soon)</a> |

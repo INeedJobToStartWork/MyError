@@ -1,0 +1,28 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "pre": {},
+    "start": {},
+    "bench": {},
+    "build": {},
+    "build:npm": {
+      "inputs": ["*", "!dist"]
+    },
+    "test": {},
+    "lint": {},
+    "lint:test": {},
+    "lint:fix": {},
+    "link-cli": {},
+    "link-cli:dev": {},
+    "unlink-cli": {},
+    "unlink-cli:dev": {},
+    "format": {},
+    "npm:prepack": {},
+    "npm:postpack": {},
+    "prepublishOnly": {},
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

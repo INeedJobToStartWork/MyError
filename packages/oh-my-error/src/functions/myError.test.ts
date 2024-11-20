@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { myError } from "./myError";
-import type { IMyError, TMyErrorList } from "@/types";
+import type { IMyError, TMyErrorList } from "../types";
 
 describe("[FUNCTION] myError", () => {
 	it("should return a basic error object", () => {

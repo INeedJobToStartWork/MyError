@@ -1,4 +1,4 @@
-import type { arrowFunction } from "@/types/internal";
+import type { arrowFunction } from "../types/internal";
 
 /**
  * Promise Wrapper.

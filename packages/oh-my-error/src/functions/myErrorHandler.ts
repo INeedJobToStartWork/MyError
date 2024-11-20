@@ -1,5 +1,5 @@
-import { myError, myErrorWrapper } from "@/functions";
-import type { TMyErrorList } from "@/types";
+import { myError, myErrorWrapper } from ".";
+import type { TMyErrorList } from "../types";
 
 /** @internal */
 const ErrorList = {

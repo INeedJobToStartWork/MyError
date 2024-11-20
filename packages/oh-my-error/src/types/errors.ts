@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import type StatusCode from "./statusCodes";
-import type { Prettify } from "@/types/internal";
+import type { Prettify } from "./internal";
 
 //----------------
 // TYPES UTILS

@@ -1,31 +1,20 @@
-name: CI
-
+name: CI/CD
 on:
   push:
     branches: [main]
   pull_request:
-    types: [opened, synchronize]
-
+    branches: [main]
 jobs:
-  Continuous-Integration:
+  Deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: \🟢 Setup node
-        uses: actions/setup-node@v4.0.2
-        with:
-          node-version: 20
-
-      - name: 🚀 Setup pnpm
-        uses: pnpm/action-setup@v4
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
-      - name: Format Files
+      - uses: actions/checkout@v3
+      - name: 🟢 Setup
+        uses: ./.github/common-actions/install
+      - name: 📝 Lint
+        run: pnpm lint
+      - name: ♻️ Format
         run: pnpm format
-      # - name: Linting Files
-      #   run: pnpm lint:fix --force && pnpm lint --force
-      - name: Building Files
-        run: pnpm build
-      - name: Start Files
-        run: pnpm start
+      - name: 🏗️ Build Package
+        run: pnpm build:npm

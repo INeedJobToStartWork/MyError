@@ -2,7 +2,7 @@
 import { describe, expect, test } from "vitest";
 import { myErrorWrapper } from "./myErrorWrapper";
 import { myError } from "./myError";
-import type { TMyErrorList } from "@/types";
+import type { TMyErrorList } from "../types";
 
 describe("[FUNCTION] myErrorWrapper", () => {
 	describe("[ERROR]", () => {

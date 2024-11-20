@@ -1,4 +1,4 @@
-import type { IMyError, TMyErrorList } from "@/types";
+import type { IMyError, TMyErrorList } from ".";
 
 /**
  * `any` - But only allowed in development.

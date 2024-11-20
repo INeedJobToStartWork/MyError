@@ -1,4 +1,4 @@
-import type { ErrorTypesCatched, TFunction, TIsPromise, UnwrapPromise } from "@/types/internal";
+import type { ErrorTypesCatched, TFunction, TIsPromise, UnwrapPromise } from "../types/internal";
 
 //----------------------
 // Types

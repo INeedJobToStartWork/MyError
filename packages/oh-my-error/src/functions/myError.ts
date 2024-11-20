@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type { IMyError } from "@/types";
+import type { IMyError } from "../types";
 
 //----------------------
 // Types

@@ -1,8 +1,8 @@
 import { readFileSync, existsSync } from "node:fs";
-import { myError, myErrorWrapper } from "@/functions";
+import { myError, myErrorWrapper } from "../../functions";
 
 import { normalize } from "node:path";
-import type { IMyError, TMyErrorList } from "@/types";
+import type { IMyError, TMyErrorList } from "../../types";
 
 export const ErrorList = {
 	notFound: {

@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { ErrorList, readFile } from "./readFile";
 import { join } from "node:path";
-import { myError, myErrorWrapper } from "@/functions";
+import { myError, myErrorWrapper } from "../../functions";
 
 describe("[FUNCTION] readFile", () => {
 	const testFilePath = join(import.meta.dirname, "/fileToRead.txt");

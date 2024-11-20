@@ -1,28 +1,66 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import type StatusCode from "./statusCodes";
 import type { Prettify } from "@/types/internal";
+
+//----------------
+// TYPES UTILS
+//----------------
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+/** Transform whole object properties type at `ValueOrFunctionAll` */
+export type ValueOrFunctionAll<T> = T extends object
+	? { [K in keyof T]: ValueOrFunctionAll<T[K]> }
+	: ValueOrFunction<T>;
+
+/** Represents a type that can be either a value of type T or a function that returns a value of type T. */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ValueOrFunction<T> = T | ((...params: any[]) => T);
 
 //----------------
 // TYPES ATOMS
 //----------------
 
-/**
- * Represents the severity level of an error or warning.
- */
+/** Represents the severity level of an error or warning.*/
 export type TSeverity = "ERROR" | "WARNING";
 
-// eslint-disable-next-line @typescript-eslint/sort-type-constituents
-/**
- * Represents a more granular severity level.
- */
+/** Represents a more granular severity level. */
 export type TSeverity2 = "CRITICAL" | "HIGH" | "LOW" | "MEDIUM";
 
-/**
- * Predefined element for Custom Templates
- */
-export type TErrorMessages =
-	| string
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	| ((...params: any[]) => string);
+//----------------
+// TYPES MOLECULES
+//----------------
+
+/** Validation field structure */
+export type TValidationError = {
+	fields: Array<{
+		[K: string]: unknown;
+		expected_format?: string;
+		max_value?: number;
+		message: string;
+		min_value?: number;
+		name?: string;
+		received_value?: unknown;
+		type?: "custom" | "format" | "range" | "required";
+	}>;
+};
+
+/** API error structure */
+export type TApiError = {
+	endpoint?: string;
+	path?: string;
+
+	status?: StatusCode | (number & {});
+	timestamp?: Date;
+};
+
+/** API rate limit structure */
+export type TApiRateLimit = {
+	limit?: number;
+	remaining?: number;
+	reset?: Date | number;
+	retryAfter?: Date | number;
+	status?: StatusCode | (number & {});
+};
 
 /**
  * Error Messages to Dev,user (Or Both)
@@ -51,89 +89,32 @@ export type TErrorMessages =
  * }
  * ```
  */
-// export type arrowFunction<T extends (...arguments_: Parameters<T>) => ReturnType<T>> = (
-// 	...arguments_: Parameters<T>
-// ) => ReturnType<T>;
 
 export type TErrorMessagesExt =
-	| Prettify<TErrorMessages>
+	| Prettify<ValueOrFunction<string>>
 	| {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			dev?: TErrorMessages;
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			user?: TErrorMessages;
+			dev?: ValueOrFunction<string>;
+			user?: ValueOrFunction<string>;
 	  };
 
-//----------------
-// Types
-//----------------
-
-export type TMyErrorList<CustomError = TAllMyErrorTypes> = Record<string, CustomError>; // TODO
+/** Error collection type */
 export type TErrorList<T> = {
 	errors?: T[];
 };
 
-/**
- * Perfect for throwing catched error by TryCatch
- */
+/** Basic error cause type */
 export type TCauseError = {
 	cause?: unknown;
 };
+
+/** Basic details container */
 export type TDetails<T = unknown> = {
 	details?: T;
 };
-/**
- * Predefined element for Custom Templates
- */
-export type TBaseError = {
-	message?: Parameters<typeof Error>[0];
-	options?: Parameters<typeof Error>[1];
-};
 
-/**
- * Predefined Type for `Error`
- */
-export type TBaseErrorExt = {
-	message?: TErrorMessages;
-	options?: TCauseError;
-};
-
-/**
- * Predefined element for Custom Templates
- */
-export type TValidationError = {
-	fields: Array<{
-		[K: string]: unknown;
-		expected_format?: string;
-		max_value?: number;
-		message: string;
-		min_value?: number;
-		name?: string;
-		received_value?: unknown;
-		type?: "custom" | "format" | "range" | "required";
-	}>;
-};
-
-/**
- * Predefined element for Custom Templates
- */
-export type TApiError = {
-	endpoint?: string;
-	path?: string;
-	status?: StatusCode | number;
-	timestamp?: Date;
-};
-
-/**
- * Predefined element for Custom Templates
- */
-export type TApiRateLimit = {
-	limit?: number;
-	remaining?: number;
-	reset?: Date | number;
-	retryAfter?: Date | number;
-	status?: StatusCode | number;
-};
+//----------------
+// TYPES ORGANISMS
+//----------------
 
 /**
  * Basic Error Template for Error
@@ -146,22 +127,28 @@ export interface IMyError {
 	name?: string;
 }
 
-/**
- * Basic Error Template for **API**
- */
+/** Basic Error Template for **API** */
 export interface IMyErrorAPI extends IMyError, TApiError {}
 
-/**
- * Basic Error Template for **API Rate limit**
- */
+/** Basic Error Template for **API Rate limit** */
 export interface IMyErrorRateLimit extends IMyError, TApiRateLimit {}
 
-/**
- * Basic Error Template for **Validation**
- */
+/** Basic Error Template for **Validation** */
 export interface IMyErrorValidation extends IMyError, TValidationError {}
 
-/**
- * Include Every Error Template
- */
+/** Every Error Template with return type Function or Value option exclude TBaseError & TBaseErrorExt */
+export type TAllMyErrorTypesExt = ValueOrFunctionAll<TAllMyErrorTypes>;
+
+/** Every Error Template exclude TBaseError & TBaseErrorExt */
 export type TAllMyErrorTypes = IMyError | IMyErrorAPI | IMyErrorRateLimit | IMyErrorValidation;
+
+/** Predefined type for `Error` with Extension */
+export type TBaseErrorExt = ValueOrFunctionAll<TBaseError>;
+
+/** Predefined type for `Error` */
+export type TBaseError = {
+	message?: Parameters<typeof Error>[0];
+	options?: Parameters<typeof Error>[1];
+};
+
+export type TMyErrorList<CustomError = TAllMyErrorTypesExt> = Record<string, CustomError>;

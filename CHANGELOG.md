@@ -1,5 +1,13 @@
 # oh-my-error
 
+## 2.0.0-prerelease.3
+
+### Minor Changes
+
+- Add passing Throwed Error to our error at `myErrorWrapper`
+- Add types `ValueOrFunctionAll` and `ValueOrFunction`
+- Add missing TSDocs to types
+
 ## 2.0.0-prerelease.2
 
 ### Patch Changes

@@ -15,6 +15,18 @@ describe("[FUNCTION] myErrorWrapper", () => {
 			expect(isError).toEqual(true);
 			expect(data).toEqual(new Error("AHA"));
 		});
+		test("Single () - PASSING ERROR", async () => {
+			const errorFunc = () => {
+				throw new Error("I throw Error!");
+			};
+			const [data, isError] = await myErrorWrapper(async () =>
+				myErrorWrapper(errorFunc, (err: { message: string }) => myError({ cause: err.message }))()
+			)();
+			expect(isError).toBe(true);
+			expect(data).toEqual({ cause: "I throw Error!" });
+
+			// expect().rejects.toThrow({ cause: "AHA" });
+		});
 		test("Single ()", () => {
 			const errorFunc = () => {
 				throw new Error("AHA");

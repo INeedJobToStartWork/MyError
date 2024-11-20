@@ -21,6 +21,8 @@ type MyErrorWrapperReturn<Fn extends AnyFunction, ErrorType = undefined> = Error
  * TryCatch One line wrapper.
  *
  * @params errorToThrow - If `fnThatMayThrow` throw error, this will be instant throwed.
+ * - if `errorToThrow` is Function (cb), it pass as argument error catched by function else return element.
+ * - typeof errorToThrow === "function" ? errorToThrow(error) : errorToThrow
  * @returns Tuple `[data,isError]`, with `errorToThrow` just `data`.
  *
  * @example
@@ -29,10 +31,10 @@ type MyErrorWrapperReturn<Fn extends AnyFunction, ErrorType = undefined> = Error
  * const [data,isError] = myErrorWrapper(readFile)("path...");
  * if(isError) throw new Error("Can't read file!")
  *
- *
  * // Or instant Error Throw (with errorToThrow)
- *
  * const data = myErrorWrapper(readFile,new Error("Can't read file!"))("path...");
+ * // With Passing Throwed Error to our error
+ * const data = myErrorWrapper(readFile,err => new Error(`ERROR MESSAGE: ${err.message}}`))("path...");
  * ```
  */
 export const myErrorWrapper =
@@ -45,7 +47,7 @@ export const myErrorWrapper =
 			(errorToThrow ? result : [result, false]) as MyErrorWrapperReturn<Fn, ErrorType>;
 
 		const returnError = (error: unknown) => {
-			if (errorToThrow) throw errorToThrow;
+			if (errorToThrow) throw typeof errorToThrow === "function" ? errorToThrow(error) : errorToThrow;
 			return [error as ErrorTypesCatched, true] as MyErrorWrapperReturn<Fn, ErrorType>;
 		};
 

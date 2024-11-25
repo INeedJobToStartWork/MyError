@@ -19,11 +19,11 @@
 	"exports": {
 		".": {
 			"types": {
-				"import": "./index.d.ts",
-				"require": "./index.d.cts"
+				"import": "./dist/index.d.ts",
+				"require": "./dist/index.d.cts"
 			},
-			"import": "./index.js",
-			"require": "./index.cjs",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs",
 			"*": "./*"
 		}
 	},

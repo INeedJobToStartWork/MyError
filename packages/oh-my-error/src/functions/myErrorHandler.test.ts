@@ -17,9 +17,10 @@ describe("[FUNCTION] myErrorHandler", () => {
 				console.error("ERROR");
 				return true;
 			}
-		};
+		} as const;
 
-		const test = myErrorHandler("FS001", MyErrorHandlerList)();
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+		const test = myErrorHandler((data as any).code, MyErrorHandlerList)();
 		expect(test).toBe(true);
 	});
 });

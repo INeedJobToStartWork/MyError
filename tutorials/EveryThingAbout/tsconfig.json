@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "noUnusedLocals": false,
+    "outDir": "./dist",
+    "baseUrl": "packages/oh-my-error/src",
+    "paths": {
+      "@/*": ["*", "*/index.ts", "*.ts"]
+    },
+    "stripInternal": true
+  },
+  "extends": "@ineedj/tsconfig/base.json"
+}

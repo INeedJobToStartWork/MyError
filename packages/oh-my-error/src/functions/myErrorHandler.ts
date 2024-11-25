@@ -45,10 +45,10 @@ const ErrorList = {
  * };
  * if (isError) myErrorHandler(data.code, MyErrorHandlerList)();
  * ```
- *
+ * @version 2.0.0
  */
 export const myErrorHandler =
-	<T extends keyof K, K extends Record<T, K[T]>>(errorCode: T, errorSolutions: K) =>
+	<T extends unknown & keyof K, K extends Record<T, K[T]>>(errorCode: T & unknown, errorSolutions: K) =>
 	// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 	(...args: Parameters<K[T]>) => {
 		if (!(errorCode in errorSolutions)) {

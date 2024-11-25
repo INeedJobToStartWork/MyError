@@ -16,7 +16,9 @@ import type { arrowFunction } from "../types/internal";
  * 	throw new Error("Can't read file!");
  * });
  * ```
+ * @version 2.0.0
  */
+
 export const myErrorCatcher =
 	<T extends arrowFunction<T>>(functionThatMayThrow: T) =>
 	async (...args: Parameters<T>): Promise<ReturnType<T>> =>

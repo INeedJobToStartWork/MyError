@@ -36,6 +36,7 @@ type MyErrorWrapperReturn<Fn extends AnyFunction, ErrorType = undefined> = Error
  * // With Passing Throwed Error to our error
  * const data = myErrorWrapper(readFile,err => new Error(`ERROR MESSAGE: ${err.message}}`))("path...");
  * ```
+ * @version 2.0.0
  */
 export const myErrorWrapper =
 	<Fn extends TFunction<Fn>, ErrorType = undefined>(

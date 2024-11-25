@@ -7,6 +7,7 @@
 - Add passing Throwed Error to our error at `myErrorWrapper`
 - Add types `ValueOrFunctionAll` and `ValueOrFunction`
 - Add missing TSDocs to types
+- Change myErrorHandler arg[0] type (added unknown)
 
 ## 2.0.0-prerelease.2
 

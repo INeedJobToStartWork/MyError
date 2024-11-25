@@ -1,5 +1,6 @@
 /**
  * HTTP Status Codes
+ * @version 2.0.0
  */
 export const StatusCode = {
 	// 1xx Informational

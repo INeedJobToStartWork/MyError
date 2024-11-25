@@ -34,7 +34,7 @@ export type TErrorReturn<CustomError = NonNullable<unknown>> = [CustomError & IM
 export type TFunctionReturn<T> = Prettify<TDataReturn<T>> | Prettify<TErrorReturn>;
 
 // export type TMyErrorList<CustomError = NonNullable<unknown>> = Record<string, Required<IMyError<CustomError>>>;
-
+/** @version 2.0.0 */
 export type TMyHandler<
 	CustomError,
 	T extends Record<number | string, { code: string & unknown }> & TMyErrorList<CustomError>

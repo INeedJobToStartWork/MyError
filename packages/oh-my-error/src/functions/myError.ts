@@ -60,6 +60,8 @@ type ErrorArgs<T> = {
  *			message:"nameInputed is on black list!"
  * }
  * ```
+ *
+ * @version 2.0.0
  */
 
 export const myError = <T extends NonNullable<unknown> = IMyError>(errorObj: T, args?: ErrorArgs<T>): T => {

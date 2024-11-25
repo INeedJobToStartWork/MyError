@@ -7,30 +7,30 @@ import type { Prettify } from "./internal";
 //----------------
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-/** Transform whole object properties type at `ValueOrFunctionAll` */
-export type ValueOrFunctionAll<T> = T extends object
-	? { [K in keyof T]: ValueOrFunctionAll<T[K]> }
-	: ValueOrFunction<T>;
+/** Transform whole object properties type at `TValueOrFunctionAll` */
+export type TValueOrFunctionAll<T> = T extends object
+	? { [K in keyof T]: TValueOrFunctionAll<T[K]> }
+	: TValueOrFunction<T>;
 
 /** Represents a type that can be either a value of type T or a function that returns a value of type T. */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ValueOrFunction<T> = T | ((...params: any[]) => T);
+export type TValueOrFunction<T> = T | ((...params: any[]) => T);
 
 //----------------
 // TYPES ATOMS
 //----------------
 
-/** Represents the severity level of an error or warning.*/
+/** Represents the severity level of an error or warning. @version 2.0.0*/
 export type TSeverity = "ERROR" | "WARNING";
 
-/** Represents a more granular severity level. */
+/** Represents a more granular severity level. @version 2.0.0*/
 export type TSeverity2 = "CRITICAL" | "HIGH" | "LOW" | "MEDIUM";
 
 //----------------
 // TYPES MOLECULES
 //----------------
 
-/** Validation field structure */
+/** Validation field structure @version 2.0.0*/
 export type TValidationError = {
 	fields: Array<{
 		[K: string]: unknown;
@@ -44,7 +44,7 @@ export type TValidationError = {
 	}>;
 };
 
-/** API error structure */
+/** API error structure @version 2.0.0*/
 export type TApiError = {
 	endpoint?: string;
 	path?: string;
@@ -53,7 +53,7 @@ export type TApiError = {
 	timestamp?: Date;
 };
 
-/** API rate limit structure */
+/** API rate limit structure @version 2.0.0*/
 export type TApiRateLimit = {
 	limit?: number;
 	remaining?: number;
@@ -88,26 +88,27 @@ export type TApiRateLimit = {
  *		}
  * }
  * ```
+ * @version 2.0.0
  */
 
 export type TErrorMessagesExt =
-	| Prettify<ValueOrFunction<string>>
+	| Prettify<TValueOrFunction<string>>
 	| {
-			dev?: ValueOrFunction<string>;
-			user?: ValueOrFunction<string>;
+			dev?: TValueOrFunction<string>;
+			user?: TValueOrFunction<string>;
 	  };
 
-/** Error collection type */
+/** Error collection type @version 2.0.0*/
 export type TErrorList<T> = {
 	errors?: T[];
 };
 
-/** Basic error cause type */
+/** Basic error cause type @version 2.0.0*/
 export type TCauseError = {
 	cause?: unknown;
 };
 
-/** Basic details container */
+/** Basic details container @version 2.0.0*/
 export type TDetails<T = unknown> = {
 	details?: T;
 };
@@ -119,6 +120,7 @@ export type TDetails<T = unknown> = {
 /**
  * Basic Error Template for Error
  * @author oh-my-error
+ * @version 2.0.0
  */
 export interface IMyError {
 	code?: number | string;
@@ -127,28 +129,29 @@ export interface IMyError {
 	name?: string;
 }
 
-/** Basic Error Template for **API** */
+/** Basic Error Template for **API** @version 2.0.0*/
 export interface IMyErrorAPI extends IMyError, TApiError {}
 
-/** Basic Error Template for **API Rate limit** */
+/** Basic Error Template for **API Rate limit** @version 2.0.0*/
 export interface IMyErrorRateLimit extends IMyError, TApiRateLimit {}
 
-/** Basic Error Template for **Validation** */
+/** Basic Error Template for **Validation** @version 2.0.0*/
 export interface IMyErrorValidation extends IMyError, TValidationError {}
 
-/** Every Error Template with return type Function or Value option exclude TBaseError & TBaseErrorExt */
-export type TAllMyErrorTypesExt = ValueOrFunctionAll<TAllMyErrorTypes>;
+/** Every Error Template with return type Function or Value option exclude TBaseError & TBaseErrorExt @version 2.0.0*/
+export type TAllMyErrorTypesExt = TValueOrFunctionAll<TAllMyErrorTypes>;
 
-/** Every Error Template exclude TBaseError & TBaseErrorExt */
+/** Every Error Template exclude TBaseError & TBaseErrorExt @version 2.0.0*/
 export type TAllMyErrorTypes = IMyError | IMyErrorAPI | IMyErrorRateLimit | IMyErrorValidation;
 
-/** Predefined type for `Error` with Extension */
-export type TBaseErrorExt = ValueOrFunctionAll<TBaseError>;
+/** Predefined type for `Error` with Extension @version 2.0.0*/
+export type TBaseErrorExt = TValueOrFunctionAll<TBaseError>;
 
-/** Predefined type for `Error` */
+/** Predefined type for `Error` @version 2.0.0*/
 export type TBaseError = {
 	message?: Parameters<typeof Error>[0];
 	options?: Parameters<typeof Error>[1];
 };
 
+/** Predefined type for `Error` @version 2.0.0*/
 export type TMyErrorList<CustomError = TAllMyErrorTypesExt> = Record<string, CustomError>;

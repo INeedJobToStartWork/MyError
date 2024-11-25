@@ -4,6 +4,17 @@
 	"replace": {
 		"scripts": {
 			"npm:postpack": "clean-package restore"
+		},
+		"exports": {
+			".": {
+				"types": {
+					"import": "./index.d.ts",
+					"require": "./index.d.cts"
+				},
+				"import": "./index.js",
+				"require": "./index.cjs",
+				"*": "./*"
+			}
 		}
 	}
 }

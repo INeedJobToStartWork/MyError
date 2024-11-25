@@ -12,7 +12,8 @@
 	"bugs": "https://github.com/INeedJobToStartWork/MyError/issues/new/choose",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/INeedJobToStartWork/MyError"
+		"url": "https://github.com/INeedJobToStartWork/MyError",
+		"directory": "packages/oh-my-error"
 	},
 	"license": "MIT",
 	"type": "module",

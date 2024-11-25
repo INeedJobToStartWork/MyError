@@ -1,6 +1,6 @@
 {
 	"name": "oh-my-error",
-	"version": "2.0.0",
+	"version": "2.0.0+build.0",
 	"description": "A simple error handler for nodejs",
 	"keywords": [
 		"error",
@@ -71,6 +71,9 @@
 		"node": ">=20"
 	},
 	"publishConfig": {
-		"access": "public"
+		"access": "public",
+		"directory": "dist",
+		"provenance": true,
+		"tag": "latest"
 	}
 }

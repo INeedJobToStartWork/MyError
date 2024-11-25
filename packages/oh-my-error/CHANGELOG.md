@@ -1,5 +1,38 @@
 # oh-my-error
 
+## 2.0.0
+
+### Major Changes
+
+- 4c9780c: - Add type `StatusCode`
+  - Add missing TSDocs
+  - Change enum StatusCode to object
+- 4f04fe2: - Add new Error Types, New Functions and Features to current existing functions
+  - Add `statusCodes` enum.
+  - Refactored `MyError` => `myError`, currently it's error object handler before throw.
+  - Added new Feature to `myErrorWrapper` - Instant throw error, no need to use condition with `isError` to throw Error.
+  - Added `myErrorWrapperAsync` which is `myErrorWrapper` alternative for async functions.
+  - Refactored `TMyError` - renamed `TMyError` => `IMyError`, changed from `type` to `interface` and structure.
+  - Add new Error (Organism) Interfaces `IMyError`,`IMyErrorAPI`,`IMyErrorRateLimit`,`IMyErrorValidation`
+  - Add new Error (Atom) types
+    `TSeverity`,`TSeverity2`,`TErrorMessages`,`TErrorMessagesExt`,`TMyErrorList`,`TErrorList`,`TCauseError`,`TDetails`,`TBaseError`,`TBaseErrorExt`,`TValidationError`,`TApiError`,`TApiRateLimit`,
+
+### Minor Changes
+
+- b9d8ffa: - Add passing Throwed Error to our error at `myErrorWrapper`
+  - Add types `TValueOrFunctionAll` and `TValueOrFunction`
+  - Add missing TSDocs to types
+  - Change myErrorHandler arg[0] type (added unknown)
+- 12098d8: - Add new Error Types, New Functions and Features to current existing functions
+  - `myErrorWrapperAsync` implemented to current `myErrorWrapper`
+  - `myErrorWrapperAsync` removed
+
+### Patch Changes
+
+- 4c9780c: - Add type `StatusCode`
+  - Add missing TSDocs
+  - Change enum StatusCode to object
+
 ## 2.0.0-prerelease.3
 
 ### Minor Changes

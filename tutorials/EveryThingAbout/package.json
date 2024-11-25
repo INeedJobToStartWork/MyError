@@ -1,8 +1,8 @@
 {
-  "name": "@tutorial/alex-story",
-  "version": "1.0.1",
+  "name": "@tutorial/everythingabout",
+  "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -55,7 +55,7 @@
 	"devDependencies": {
 		"@esplugins/no-internal-exports": "^1.0.0",
 		"@ineedj/eslintrc": "^1.2.3",
-		"@ineedj/prettierrc": "^2.0.0",
+		"@ineedj/prettierrc": "^3.0.0",
 		"@ineedj/tsconfig": "^1.0.0",
 		"@types/eslint": "~9.6.1",
 		"@types/node": "^20.16.10",

@@ -2,6 +2,7 @@
 	"indent": 4,
 	"remove": ["devDependencies", "dependencies", "lint-staged", "bin", "module", "main", "packageManager"],
 	"replace": {
+		"name": "oh-my-error",
 		"scripts": {
 			"npm:postpack": "clean-package restore"
 		},

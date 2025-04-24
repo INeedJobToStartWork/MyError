@@ -8,7 +8,7 @@
  * into elegant one-line expressions. It provides multiple ways to handle errors
  * and access error information.
  *
- * @version 2.0.0
+ * @version 3.0.0
  */
 
 import { myErrorWrapper } from "@packages/oh-my-error";
@@ -34,11 +34,11 @@ try {
  * 🟩 Solution 1: Basic Usage with Destructuring
  *
  * @description Simple Wrapping, no extra args.
- * @returns Array with two elements: [data, isError]
- * - On Success: [functionResult, false]
- * - On Error: [caughtError, true]
+ * @returns Object with two elements: { data, isError }
+ * - On Success: { data:functionResult, isError:false }
+ * - On Error: { data:caughtError, isError:true }
  */
-const [data, isError] = myErrorWrapper(crashIf10)(10);
+const { data, isError } = myErrorWrapper(crashIf10)(10);
 if (isError) throw new Error("Invalid number!");
 else console.log(data);
 
@@ -72,9 +72,9 @@ try {
  * 🟩 Solution 1: Error Access with Destructuring
  *
  * @description Allows access to the original error through destructuring
- * @returns Array with [data, isError] where data contains the error on failure
+ * @returns Object with {data, isError} where data contains the error on failure
  */
-const [data3, isError2] = myErrorWrapper(crashIf10)(10);
+const { data3, isError2 } = myErrorWrapper(crashIf10)(10);
 if (isError2) throw new Error("Invalid number!", { cause: data3 });
 else console.log(data3);
 

@@ -14,7 +14,7 @@ describe("[FUNCTION] readFile", () => {
 
 	it('should throw a "Not Found" error when file does not exist', () => {
 		const pathToFile = join(import.meta.dirname, "/oyyoyoyoyoyoyo");
-		const [data, isError] = myErrorWrapper(readFile)(pathToFile);
+		const { data, isError } = myErrorWrapper(readFile)(pathToFile);
 		expect(isError).toEqual(true);
 		expect(data).toEqual(myError(ErrorList.notFound, { hint: [pathToFile] }));
 	});

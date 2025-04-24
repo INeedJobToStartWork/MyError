@@ -6,12 +6,12 @@ import type { TMyErrorList } from "../types";
 
 describe("[FUNCTION] myErrorWrapper", () => {
 	describe("[ERROR]", () => {
-		test("Double ()", () => {
+		test("Double ()", async () => {
 			const errorFunc = () => {
 				throw new Error("AHA");
 			};
 
-			const [data, isError] = myErrorWrapper(errorFunc)();
+			const { data, isError } = await myErrorWrapper(errorFunc)();
 			expect(isError).toEqual(true);
 			expect(data).toEqual(new Error("AHA"));
 		});
@@ -19,7 +19,7 @@ describe("[FUNCTION] myErrorWrapper", () => {
 			const errorFunc = () => {
 				throw new Error("I throw Error!");
 			};
-			const [data, isError] = await myErrorWrapper(async () =>
+			const { data, isError } = await myErrorWrapper(async () =>
 				myErrorWrapper(errorFunc, (err: { message: string }) => myError({ cause: err.message }))()
 			)();
 			expect(isError).toBe(true);
@@ -27,12 +27,12 @@ describe("[FUNCTION] myErrorWrapper", () => {
 
 			// expect().rejects.toThrow({ cause: "AHA" });
 		});
-		test("Single ()", () => {
+		test("Single ()", async () => {
 			const errorFunc = () => {
 				throw new Error("AHA");
 			};
 
-			const [data, isError] = myErrorWrapper(() => errorFunc())();
+			const { data, isError } = await myErrorWrapper(() => errorFunc())();
 			expect(isError).toEqual(true);
 			expect(data).toEqual(new Error("AHA"));
 		});
@@ -41,7 +41,7 @@ describe("[FUNCTION] myErrorWrapper", () => {
 				throw new Error("AHA");
 			};
 
-			const [data, isError] = await myErrorWrapper(errorFunc)();
+			const { data, isError } = await myErrorWrapper(errorFunc)();
 			expect(isError).toEqual(true);
 			expect(data).toEqual(new Error("AHA"));
 		});
@@ -50,7 +50,7 @@ describe("[FUNCTION] myErrorWrapper", () => {
 				throw new Error("AHA");
 			};
 
-			const [data, isError] = await myErrorWrapper(async () => errorFunc())();
+			const { data, isError } = await myErrorWrapper(async () => errorFunc())();
 			expect(isError).toEqual(true);
 			expect(data).toEqual(new Error("AHA"));
 		});
@@ -66,7 +66,7 @@ describe("[FUNCTION] myErrorWrapper", () => {
 				if (sum1 > 10 || sum2 > 10) throw new Error("sum1 or sum2 is higher than 10!");
 				return sum1 + sum2;
 			};
-			const [error, isError] = await myErrorWrapper(async () =>
+			const { data: error, isError } = await myErrorWrapper(async () =>
 				myErrorWrapper(sumMax10, myError(MyErrorList.TOO_HIGH_NUMBER))(1, 20)
 			)();
 			expect(isError).toEqual(true);
@@ -77,29 +77,29 @@ describe("[FUNCTION] myErrorWrapper", () => {
 		test("Double ()", () => {
 			const sum = (sum1: number, sum2: number) => sum1 + sum2;
 
-			const [data, isError] = myErrorWrapper(sum)(1, 2);
+			const { data, isError } = myErrorWrapper(sum)(1, 2);
 			expect(isError).toEqual(false);
 			expect(data).toEqual(3);
 		});
 		test("Single ()", () => {
 			const sum = (sum1: number, sum2: number) => sum1 + sum2;
 
-			// const [data, isError] = myErrorWrapper(() => sum)();
-			const [data, isError] = myErrorWrapper(() => sum(1, 2))();
+			// const {data, isError} = myErrorWrapper(() => sum)();
+			const { data, isError } = myErrorWrapper(() => sum(1, 2))();
 			expect(isError).toEqual(false);
 			expect(data).toEqual(3);
 		});
 		test("Async Single ()", async () => {
 			const sum = async (sum1: number, sum2: number) => (await sum1) + sum2;
 
-			const [data, isError] = await myErrorWrapper(async () => sum(1, 2))();
+			const { data, isError } = await myErrorWrapper(async () => sum(1, 2))();
 			expect(isError).toEqual(false);
 			expect(data).toEqual(3);
 		});
 		test("Async Double ()", async () => {
 			const sum = async (sum1: number, sum2: number) => (await sum1) + sum2;
 
-			const [data, isError] = await myErrorWrapper(sum)(1, 2);
+			const { data, isError } = await myErrorWrapper(sum)(1, 2);
 			expect(isError).toEqual(false);
 			expect(data).toEqual(3);
 		});

@@ -35,7 +35,7 @@ const ErrorList = {
  *
  * @example
  * ```
- * const [data, isError] = myErrorWrapper(readFile)("./ReadThisFile");
+ * const {data, isError} = myErrorWrapper(readFile)("./ReadThisFile");
  *
  * const MyErrorHandlerList = {
  * 	FS001: () => {

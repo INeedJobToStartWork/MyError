@@ -29,7 +29,7 @@ const data = new Promise((resolve) => {
  * 🟩 Solution 1: Basic Usage with Destructuring
  *
  * @description Simple Wrapping, no extra args.
- * @returns Array with two elements: [data, isError]
+ * @returns Array with two elements: {data, isError}
  * - On Success: [functionResult, false]
  * - On Error: [caughtError, true]
  */

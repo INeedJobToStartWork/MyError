@@ -32,7 +32,7 @@ const MyErrorHandlerList = {
   },
 } as const;
 
-const [data, isError] = myErrorWrapper(nameValidator)("badName");
+const { data, isError } = myErrorWrapper(nameValidator)("badName");
 if (isError) myErrorHandler((data as any).code, MyErrorHandlerList)();
 else console.log(data);
 

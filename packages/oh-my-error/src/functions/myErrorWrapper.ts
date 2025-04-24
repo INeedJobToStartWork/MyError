@@ -9,8 +9,8 @@ type AnyFunction = (...args: any[]) => any;
 
 type MyErrorWrapperReturn<Fn extends AnyFunction, ErrorType = undefined> = ErrorType extends undefined
 	? TIsPromise<ReturnType<Fn>> extends true
-		? Promise<[ErrorTypesCatched, true] | [UnwrapPromise<ReturnType<Fn>>, false]>
-		: [ErrorTypesCatched, true] | [ReturnType<Fn>, false]
+		? Promise<{ data: ErrorTypesCatched; isError: true } | { data: UnwrapPromise<ReturnType<Fn>>; isError: false }>
+		: { data: ErrorTypesCatched; isError: true } | { data: ReturnType<Fn>; isError: false }
 	: ReturnType<Fn>;
 
 //----------------------
@@ -23,12 +23,12 @@ type MyErrorWrapperReturn<Fn extends AnyFunction, ErrorType = undefined> = Error
  * @param errorToThrow - If `fnThatMayThrow` throw error, this will be instant throwed.
  * - if `errorToThrow` is Function (cb), it pass as argument error catched by function else return element.
  * - typeof errorToThrow === "function" ? errorToThrow(error) : errorToThrow
- * @returns Tuple `[data,isError]`, with `errorToThrow` just `data`.
+ * @returns Object `{ data, isError }`, with `errorToThrow` just `data`.
  *
  * @example
  * ```
  * // For Async add `await` before `myErrorWrapper`
- * const [data,isError] = myErrorWrapper(readFile)("path...");
+ * const { data, isError } = myErrorWrapper(readFile)("path...");
  * if(isError) throw new Error("Can't read file!")
  *
  * // Or instant Error Throw (with errorToThrow)
@@ -36,7 +36,7 @@ type MyErrorWrapperReturn<Fn extends AnyFunction, ErrorType = undefined> = Error
  * // With Passing Throwed Error to our error
  * const data = myErrorWrapper(readFile,err => new Error(`ERROR MESSAGE: ${err.message}}`))("path...");
  * ```
- * @version 2.0.0
+ * @version 3.0.0
  */
 export const myErrorWrapper =
 	<Fn extends TFunction<Fn>, ErrorType = undefined>(
@@ -45,11 +45,11 @@ export const myErrorWrapper =
 	): ((...args: Parameters<Fn>) => MyErrorWrapperReturn<Fn, ErrorType>) =>
 	(...args: Parameters<Fn>): MyErrorWrapperReturn<Fn, ErrorType> => {
 		const returnFNOutput = <G>(result: G) =>
-			(errorToThrow ? result : [result, false]) as MyErrorWrapperReturn<Fn, ErrorType>;
+			(errorToThrow ? result : { data: result, isError: false }) as MyErrorWrapperReturn<Fn, ErrorType>;
 
 		const returnError = (error: unknown) => {
 			if (errorToThrow) throw typeof errorToThrow === "function" ? errorToThrow(error) : errorToThrow;
-			return [error as ErrorTypesCatched, true] as MyErrorWrapperReturn<Fn, ErrorType>;
+			return { data: error as ErrorTypesCatched, isError: true } as MyErrorWrapperReturn<Fn, ErrorType>;
 		};
 
 		try {

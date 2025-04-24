@@ -12,8 +12,8 @@ importers:
         specifier: ^2.27.8
         version: 2.27.10
       commitsmile:
-        specifier: ^0.6.1
-        version: 0.6.1
+        specifier: ^1.0.3
+        version: 1.0.3
       husky:
         specifier: ^9.1.6
         version: 9.1.7
@@ -1218,15 +1218,17 @@ packages:
     resolution: {integrity: sha512-buhp5kePrmda3vhc5B9t7pUQXAb2Tnd0qgpkIhPhkHXxJpiPJ11H0ZEU0oBpJ2QztSbzG/ZxMj/CHsYJqRHmyg==}
     engines: {node: '>= 12.0.0'}
 
-  commitsmile@0.6.1:
-    resolution: {integrity: sha512-UkXlPtGzGr/1Fe+UgwTK9YDVU0GJtTGv9Gjhr2ZPMypg3LmjgzDbUxZx1jV6P4cNh83/CgwKi/RJb7AM7UKHww==}
-    engines: {node: '>=18'}
+  commitsmile@1.0.3:
+    resolution: {integrity: sha512-Uan1k+oJ7JQlbTNmHldtEOfe1AZd7L+MzmUK6YEk6IJFonV3nhuBNYJ5Fyml8tAXdGq1vhiOFSVzhX6rVGP2/g==}
+    engines: {node: '>=20'}
     hasBin: true
     bundledDependencies:
       - '@clack/prompts'
+      - c12
       - commander
-      - jiti
-      - zod
+      - oh-my-error
+      - typia
+      - yaml
 
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
@@ -5062,7 +5064,7 @@ snapshots:
 
   comment-parser@1.4.1: {}
 
-  commitsmile@0.6.1: {}
+  commitsmile@1.0.3: {}
 
   concat-map@0.0.1: {}
 

@@ -20,7 +20,7 @@ type MyErrorWrapperReturn<Fn extends AnyFunction, ErrorType = undefined> = Error
 /**
  * TryCatch One line wrapper.
  *
- * @params errorToThrow - If `fnThatMayThrow` throw error, this will be instant throwed.
+ * @param errorToThrow - If `fnThatMayThrow` throw error, this will be instant throwed.
  * - if `errorToThrow` is Function (cb), it pass as argument error catched by function else return element.
  * - typeof errorToThrow === "function" ? errorToThrow(error) : errorToThrow
  * @returns Tuple `[data,isError]`, with `errorToThrow` just `data`.

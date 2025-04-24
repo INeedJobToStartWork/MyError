@@ -1,5 +1,12 @@
 # @tutorial/alex-story
 
+## 1.0.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @packages/oh-my-error@2.0.2
+
 ## 1.0.1
 
 ### Patch Changes

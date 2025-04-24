@@ -1,6 +1,6 @@
 {
 	"name": "@packages/oh-my-error",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"description": "A simple error handler for nodejs",
 	"type": "module",
 	"license": "MIT",

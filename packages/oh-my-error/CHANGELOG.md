@@ -1,5 +1,11 @@
 # oh-my-error
 
+## 2.0.2
+
+### Patch Changes
+
+- Wrong TSDocs tag at `myErrorWrapper` function. `@params` => `@param`
+
 ## 2.0.1
 
 ### Patch Changes

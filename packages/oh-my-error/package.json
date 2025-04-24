@@ -2,6 +2,8 @@
 	"name": "oh-my-error",
 	"version": "2.0.1",
 	"description": "A simple error handler for nodejs",
+	"type": "module",
+	"license": "MIT",
 	"keywords": [
 		"error",
 		"handler",
@@ -15,8 +17,6 @@
 		"url": "https://github.com/INeedJobToStartWork/MyError",
 		"directory": "packages/oh-my-error"
 	},
-	"license": "MIT",
-	"type": "module",
 	"exports": {
 		".": {
 			"types": {
@@ -29,20 +29,26 @@
 		}
 	},
 	"scripts": {
-		"build": "pnpm tsup --config ./config/tsuprc/tsup.prod.ts",
-		"build:npm": "pnpm npm:prepack && pnpm tsup --config ./config/tsuprc/tsup.prod.ts && pnpm npm:postpack",
-		"dev": "pnpm tsup --config ./config/tsuprc/tsup.dev.ts",
-		"format": "pnpm prettier . --write && pnpm prettier . --check",
-		"preinstall": "husky install",
+		"------------------------INSTALLATION-------------------": "",
+		"preinstall": "husky init",
+		"pre": "npx lint-staged",
+		"pre:husky": "git add . && lint-staged",
+		"------------------------UTILS--------------------------": "",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
+		"format": "pnpm prettier . --write && pnpm prettier . --check",
+		"clean": "turbo clean",
+		"------------------------BUILDS-------------------------": "",
+		"build:prod": "pnpm tsup --config ./config/tsuprc/tsup.prod.ts",
+		"build:npm": "pnpm npm:prepack && pnpm tsup --config ./config/tsuprc/tsup.prod.ts && pnpm npm:postpack",
+		"build:dev": "pnpm tsup --config ./config/tsuprc/tsup.dev.ts",
+		"------------------------DEPLOYS------------------------": "",
+		"prepublishOnly": "pnpm build:npm",
 		"npm:postpack": "clean-package restore",
 		"npm:prepack": "clean-package",
-		"pre": "npx lint-staged",
-		"pre:husky": "git add . && npx lint-staged",
-		"prepublishOnly": "pnpm build:npm",
-		"start": "node ./dist/index.cjs",
-		"test": "pnpm vitest"
+		"------------------------TESTS--------------------------": "",
+		"test": "pnpm vitest",
+		"bench": "turbo bench // added for benchmarking"
 	},
 	"lint-staged": {
 		"*": [
@@ -68,7 +74,7 @@
 		"typescript": "5.3.2",
 		"vitest": "^2.1.1"
 	},
-	"packageManager": "pnpm@9.4.0",
+	"packageManager": "pnpm@10.9.0",
 	"engines": {
 		"node": ">=20"
 	},

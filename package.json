@@ -1,29 +1,38 @@
 {
-  "name": "oh-my-error-monorepo",
-  "version": "0.0.0",
+  "name": "@monorepo/oh-my-error",
   "private": true,
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "dev": "turbo dev",
-    "build": "turbo build",
-    "build:npm": "turbo build:npm",
-    "start": "turbo start",
+    "------------------------INSTALLATION-------------------": "",
+    "preinstall": "husky init",
+    "prepare": "husky",
+    "pre": "turbo pre",
+    "pre:husky": "git add . && lint-staged",
+    "------------------------UTILS--------------------------": "",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
-    "lint:test": "turbo lint:fix",
+    "lint:next": "turbo lint:next",
+    "lint:test": "turbo lint:test",
     "format": "turbo format",
-    "bench": "turbo bench",
     "clean": "turbo clean",
+    "link-cli": "turbo link-cli",
+    "link-cli:dev": "turbo link-cli",
+    "unlink-cli:dev": "turbo link-cli",
+    "------------------------BUILDS-------------------------": "",
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "build:dev": "turbo build:dev",
+    "build:prod": "turbo build:prod",
+    "build:npm": "turbo build:npm",
+    "------------------------DEPLOYS------------------------": "",
+    "start:dev": "turbo start:dev",
+    "start:prod": "turbo start:prod",
     "npm:prepack": "turbo npm:prepack",
     "npm:postpack": "turbo npm:postpack",
     "npm:version": "changeset version",
     "npm:publish": "changeset publish",
-    "preinstall": "husky init",
-    "pre": "turbo pre",
-    "pre:husky": "git add . && lint-staged",
-    "prepare": "husky",
-    "test": "turbo test"
+    "------------------------TESTS--------------------------": "",
+    "test": "turbo test",
+    "bench": "turbo bench"
   },
   "devDependencies": {
     "commitsmile": "^0.6.1",
@@ -40,5 +49,5 @@
   "lint-staged": {
     "*": ""
   },
-  "packageManager": "pnpm@9.4.0"
+  "packageManager": "pnpm@9.15.9"
 }

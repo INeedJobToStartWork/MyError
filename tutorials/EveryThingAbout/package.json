@@ -11,11 +11,11 @@
   "license": "ISC",
   "devDependencies": {
     "@ineedj/tsconfig": "^1.0.0",
-    "typescript": "5.7.2",
+    "typescript": "5.8.3",
     "@total-typescript/ts-reset": "0.6.1",
-    "vitest": "^2.1.1"
+    "vitest": "^3.1.2"
   },
   "dependencies": {
-    "oh-my-error": "workspace:*"
+    "@packages/oh-my-error": "workspace:*"
   }
 }

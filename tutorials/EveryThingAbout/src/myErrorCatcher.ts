@@ -6,7 +6,7 @@
  * @version 2.0.0
  */
 
-import { myErrorCatcher } from "oh-my-error";
+import { myErrorCatcher } from "@packages/oh-my-error";
 
 //----------------------
 // 1️⃣ Basic Error Handling

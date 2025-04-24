@@ -18,7 +18,7 @@ import {
   TValueOrFunctionAll,
   type IMyError,
   type TMyErrorList,
-} from "oh-my-error";
+} from "@packages/oh-my-error";
 
 //----------------------
 // 1️⃣ Built-in Custom Errors

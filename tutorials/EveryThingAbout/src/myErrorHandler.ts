@@ -11,7 +11,7 @@ import {
   myErrorHandler,
   myErrorWrapper,
   TMyErrorList,
-} from "oh-my-error";
+} from "@packages/oh-my-error";
 
 //----------------------
 // 1️⃣ Error scenario handling

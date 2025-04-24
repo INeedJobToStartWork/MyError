@@ -11,7 +11,7 @@
  * @version 2.0.0
  */
 
-import { myErrorWrapper } from "oh-my-error";
+import { myErrorWrapper } from "@packages/oh-my-error";
 
 //----------------------
 // 1️⃣ Basic Error Handling

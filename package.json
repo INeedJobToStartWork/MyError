@@ -36,10 +36,10 @@
   },
   "devDependencies": {
     "commitsmile": "^1.0.3",
-    "turbo": "^2.3.0",
-    "lint-staged": "^15.2.10",
-    "husky": "^9.1.6",
-    "@changesets/cli": "^2.27.8"
+    "turbo": "^2.5.1",
+    "lint-staged": "^15.5.1",
+    "husky": "^9.1.7",
+    "@changesets/cli": "^2.29.2"
   },
   "author": "INEEDJ <ineedjobtostartwork@gmail.com>",
   "license": "MIT",
@@ -49,5 +49,5 @@
   "lint-staged": {
     "*": ""
   },
-  "packageManager": "pnpm@9.15.9"
+  "packageManager": "pnpm@10.9.0"
 }
